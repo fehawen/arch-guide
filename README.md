@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/fehawen/arch-rice">
+  <a href="https://github.com/fehawen/arch-guide">
     <img alt="arch rice" src="https://user-images.githubusercontent.com/36552788/51067962-869ce980-1617-11e9-892b-53df540776b5.png" width="350">
   </a>
   <br>Arch Linux
@@ -24,26 +24,26 @@ Baby steps, my dear Watson. Baby steps.
 
 ## Table of Contents
 
-[**Preparations**](https://github.com/fehawen/arch-rice#preparations)
+[**Preparations**](https://github.com/fehawen/arch-guide#preparations)
 
-1. [Installation Medium](https://github.com/fehawen/arch-rice#1-installation-medium)
-2. [Booting into Arch](https://github.com/fehawen/arch-rice#2-booting-into-arch)
-3. [Keymap](https://github.com/fehawen/arch-rice#3-keymap)
-4. [Internet Connection](https://github.com/fehawen/arch-rice#4-internet-connection)
-	* 4.1. [Ethernet](https://github.com/fehawen/arch-rice#41-ethernet)
-	* 4.2. [Wi-Fi](https://github.com/fehawen/arch-rice#42-wi-fi)
+1. [Installation Medium](https://github.com/fehawen/arch-guide#1-installation-medium)
+2. [Booting into Arch](https://github.com/fehawen/arch-guide#2-booting-into-arch)
+3. [Keymap](https://github.com/fehawen/arch-guide#3-keymap)
+4. [Internet Connection](https://github.com/fehawen/arch-guide#4-internet-connection)
+	* 4.1. [Ethernet](https://github.com/fehawen/arch-guide#41-ethernet)
+	* 4.2. [Wi-Fi](https://github.com/fehawen/arch-guide#42-wi-fi)
 
-[**Installation**](https://github.com/fehawen/arch-rice#installation)
+[**Installation**](https://github.com/fehawen/arch-guide#installation)
 
-5. [Notes on Partitioning](https://github.com/fehawen/arch-rice#installation)
-6. [Generic (GRUB)](https://github.com/fehawen/arch-rice#6-generic-grub)
-	* 6.1. [Partitioning](https://github.com/fehawen/arch-rice#61-partitioning)
-	* 6.2. [Format & Mount](https://github.com/fehawen/arch-rice#62-format--mount)
-	* 6.3. [Install Base system](https://github.com/fehawen/arch-rice#63-install-base-system)
-	* 6.4. [Configure Installation](https://github.com/fehawen/arch-rice#64-configure-installation)
-7. [MacBook - Notes on Broadcom 43xx Chipsets](https://github.com/fehawen/arch-rice#7-notes-on-macbook-broadcom-43xx-chipsets)
-8. [MacBook 6,1 (EFI / systemd-boot)](https://github.com/fehawen/arch-rice#8-macbook-61)
-9. [MacBook Pro 11,1 (EFI / systemd boot)](https://github.com/fehawen/arch-rice#9-macbook-pro-111)
+5. [Notes on Partitioning](https://github.com/fehawen/arch-guide#installation)
+6. [Generic (GRUB)](https://github.com/fehawen/arch-guide#6-generic-grub)
+	* 6.1. [Partitioning](https://github.com/fehawen/arch-guide#61-partitioning)
+	* 6.2. [Format & Mount](https://github.com/fehawen/arch-guide#62-format--mount)
+	* 6.3. [Install Base system](https://github.com/fehawen/arch-guide#63-install-base-system)
+	* 6.4. [Configure Installation](https://github.com/fehawen/arch-guide#64-configure-installation)
+7. [MacBook - Notes on Broadcom 43xx Chipsets](https://github.com/fehawen/arch-guide#7-notes-on-macbook-broadcom-43xx-chipsets)
+8. [MacBook 6,1 (EFI / systemd-boot)](https://github.com/fehawen/arch-guide#8-macbook-61)
+9. [MacBook Pro 11,1 (EFI / systemd boot)](https://github.com/fehawen/arch-guide#9-macbook-pro-111)
 
 
 ## Preparations
@@ -61,6 +61,8 @@ $ sudo dd if=path/to/arch.iso of=/dev/rdisk<X> bs=1m
 ```
 
 If you're not on macOS, have a look [here](https://wiki.archlinux.org/index.php/USB_flash_installation_media) on how to do it.
+
+For a GUI way of doing it, you can use something like [Etcher](https://wiki.archlinux.org/index.php/USB_flash_installation_media#Using_etcher), which make be easier for you in some sense.
 
 ### 2. Booting into Arch
 
