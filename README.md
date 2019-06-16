@@ -66,7 +66,9 @@ For a GUI way of doing it, you can use something like [Etcher](https://wiki.arch
 
 ### 2. Booting into Arch
 
-Again, if you're on **macOS**, reboot your computer and hold **C** to boot directly from a second boot device (your USB, hint hint), or hold **Option** to enter the boot menu from where you'll choose your installation media (yep, you guessed it – your USB!).
+Again, if you're on **macOS** (or more specifically an Apple machine), reboot your computer and hold **C** to boot directly from a second boot device (your USB, hint hint), or hold **Option** to enter the boot menu from where you'll choose your installation media (yep, you guessed it – your USB!).
+
+On other systems/machines, changing the boot order or boot device is done in the BIOS settings menu, which can be accessed by spamming something like `F2` or `F6` on startup – or with `F10` from where you'll have to navigate the BIOS settings/setup menu. Exactly which key brings up said menu on startup varies, but a quick search on your specific machine should give you the answer.
 
 ### 3. Keymap
 
