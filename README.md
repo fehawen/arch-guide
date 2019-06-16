@@ -24,6 +24,7 @@ But, I can't be arsed to memorize all the darn commands and steps and options an
 4. [Internet Connection](https://github.com/fehawen/arch-guide#4-internet-connection)
 	* 4.1. [Ethernet](https://github.com/fehawen/arch-guide#41-ethernet)
 	* 4.2. [Wi-Fi](https://github.com/fehawen/arch-guide#42-wi-fi)
+	* 4.2.1 [wpa_supplicant](https://github.com/fehawen/arch-guide#421-wpa_supplicant)
 
 [**Installation**](https://github.com/fehawen/arch-guide#installation)
 
