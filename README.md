@@ -8,7 +8,7 @@
 
 # About
 
-Yes, yes, I know. RTFM and all that crap. All the hardcore Arch users out there will frown upon the fact that I'm writing my own installation guide/notes (and showing them to the world) instead of reading the [Bible](https://wiki.archlinux.org/index.php/installation_guide) from top to bottom, as if installing an OS is the only thing ever worth spending your time on doing.
+Yes, yes, I know. RTFM and all that crap. Some hardcore Linux users out there might frown upon the fact that I'm writing my own installation guide/notes (and sharing them with the rest of the world - OMG! Open Source!? ) instead of reading the [Bible](https://wiki.archlinux.org/index.php/installation_guide) from top to bottom, as if installing an OS is the only thing ever worth spending your time on doing.
 
 But, I can't be arsed to memorize all the darn commands and steps and options and keep-in-minds and whatnots, and I don't fancy having a gazillion browser tabs open whenever I need to reinstall it, so I'll do what's forbidden and put together my own little cheatsheet here. Don't be haters, alligators.
 
@@ -58,7 +58,7 @@ For a GUI way of doing it, you can use something like [Etcher](https://wiki.arch
 
 ### 2. Booting into Arch
 
-Again, if you're on **macOS** (or more specifically an Apple machine), reboot your computer and hold **C** to boot directly from a second boot device (your USB, hint hint), or hold **Option** to enter the boot menu from where you'll choose your installation media (yep, you guessed it – your USB!).
+Again, if you're on **macOS** (or more specifically an Apple machine), reboot your computer and hold **C** to boot directly from a second boot device – in this case your Live USB, or hold **Option** to enter the boot menu from where you'll choose your installation media – again, your Live USB in this case.
 
 On other systems/machines, changing the boot order or boot device is done in the BIOS settings menu, which can be accessed by spamming something like `F2` or `F6` on startup – or with `F10` from where you'll have to navigate the BIOS settings/setup menu. Exactly which key brings up said menu on startup varies, but a quick search on your specific machine should give you the answer.
 
@@ -75,13 +75,11 @@ Permanent keymap/keyboard layout will be set later on. Use whenever needed until
 
 Depending on the situation, hardware, prerequisites etc, set up a connection using either `ethernet` or `wi-fi`.
 
-Fed up with laptops sporting ever-changing input ports and over-priced adapters (erhmm... Apple...), leaving you unable to connect an ethernet cable? Then tethering from your phone over USB should work fine, at least if it's an **Android** phone (or so I've heard). If it's an **iPhone** you're currently sporting, then perhaps you ought to read [this](https://wiki.archlinux.org/index.php/IPhone_tethering).
+Do you have one of those fancy new laptops with something ridiculous as perhaps a single USB-C port (Apple...), which requires you buy a buttload of (unreasonably expensive) adaptors to accomodate your connections? Then tethering from your phone over USB should work fine, at least if it's an **Android** phone (or so I've heard), and as long as you have the appropriate adaptor of course. If it's an **iPhone** you're currently sporting, then perhaps you ought to read [this](https://wiki.archlinux.org/index.php/IPhone_tethering).
 
 Otherwise, don't bother, just connect via wi-fi and hope it's working.
 
 #### 4.1. Ethernet
-
-Make sure you're somehow connected (really?).
 
 Detect your network interface, called something like `enp0s25` or whatever.
 
@@ -107,6 +105,8 @@ $ ping -c 5 8.8.8.8
 ```
 
 #### 4.2. Wi-Fi
+
+##### 4.2.1 wpa_supplicant
 
 Check the wireless card status.
 
@@ -179,6 +179,8 @@ Use `-r` flag to release private IP address, when/if needed.
 ```
 $ dhclient <interface> -r
 ```
+
+##### wifimienu
 
 ## Installation
 
