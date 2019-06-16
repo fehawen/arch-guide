@@ -6,19 +6,11 @@
 	<br>Installation Guide & Rice Config
 </h1>
 
-# Work In Progress
-
-...
-
 # About
 
 Yes, yes, I know. RTFM and all that crap. All the hardcore Arch users out there will frown upon the fact that I'm writing my own installation guide/notes (and showing them to the world) instead of reading the [Bible](https://wiki.archlinux.org/index.php/installation_guide) from top to bottom, as if installing an OS is the only thing ever worth spending your time on doing.
 
-But, I can't be arsed to memorize all the darn commands and steps and options and keep-in-minds and whatnots, and I don't fancy having a gazillion browser tabs open whenever I need to reinstall it, so I'll do what's forbidden and put together my own little cheatsheet here. Don't be haters, all you Arch Linux [*something that rhymes with haters*].
-
-Oh, and about the rice config. Don't worry, it's coming, all in due time...
-
-Baby steps, my dear Watson. Baby steps.
+But, I can't be arsed to memorize all the darn commands and steps and options and keep-in-minds and whatnots, and I don't fancy having a gazillion browser tabs open whenever I need to reinstall it, so I'll do what's forbidden and put together my own little cheatsheet here. Don't be haters, alligators.
 
 # Install
 
