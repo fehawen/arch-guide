@@ -27,25 +27,26 @@ But, I can't be arsed to memorize all the darn commands and steps and options an
 2. [Booting into Arch](https://github.com/fehawen/arch-guide#2-booting-into-arch)
 	* 2.1. [Apple](https://github.com/fehawen/arch-guide#21-apple)
 	* 2.2. [Others](https://github.com/fehawen/arch-guide#22-others)
+3. [UEFI or BIOS](https://github.com/fehawen/arch-guide#3-uefi-or-bios)
 
 [**Installation**](https://github.com/fehawen/arch-guide#installation)
 
-3. [Keymap](https://github.com/fehawen/arch-guide#3-keymap)
-4. [Font Size](https://github.com/fehawen/arch-guide#4-font-size)
-5. [Internet Connection](https://github.com/fehawen/arch-guide#5-internet-connection)
-	* 5.1. [Ethernet](https://github.com/fehawen/arch-guide#51-ethernet)
-	* 5.2. [Wi-Fi](https://github.com/fehawen/arch-guide#52-wi-fi)
-		* 5.2.1 [wpa_supplicant](https://github.com/fehawen/arch-guide#521-wpa_supplicant)
-		* 5.2.2 [wifimenu](https://github.com/fehawen/arch-guide#522-wifimenu)
-6. [Partitioning](https://github.com/fehawen/arch-guide#6-partitioning)
-	* 6.1. [Notes](https://github.com/fehawen/arch-guide#61-notes)
-	* 6.2. [Partitioning for GRUB](https://github.com/fehawen/arch-guide#62-partitioning-for-grub)
-	* 6.3. [Partitioning for systemd](https://github.com/fehawen/arch-guide#63-partitioning-for-systemd)
-7. [Install Base system](https://github.com/fehawen/arch-guide#7-install-base-system)
-8. [Configure Installation](https://github.com/fehawen/arch-guide#8-configure-installation)
-9. [Install Bootloader](https://github.com/fehawen/arch-guide#9-install-bootloader)
-	* 9.1. [GRUB](https://github.com/fehawen/arch-guide#91-grub)
-	* 9.2. [systemd](https://github.com/fehawen/arch-guide#92-systemd-boot)
+4. [Keymap](https://github.com/fehawen/arch-guide#4-keymap)
+5. [Font Size](https://github.com/fehawen/arch-guide#5-font-size)
+6. [Internet Connection](https://github.com/fehawen/arch-guide#6-internet-connection)
+	* 6.1. [Ethernet](https://github.com/fehawen/arch-guide#61-ethernet)
+	* 6.2. [Wi-Fi](https://github.com/fehawen/arch-guide#62-wi-fi)
+		* 6.2.1 [wpa_supplicant](https://github.com/fehawen/arch-guide#621-wpa_supplicant)
+		* 6.2.2 [wifimenu](https://github.com/fehawen/arch-guide#622-wifimenu)
+7. [Partitioning](https://github.com/fehawen/arch-guide#7-partitioning)
+	* 7.1. [Notes](https://github.com/fehawen/arch-guide#71-notes)
+	* 7.2. [Partitioning for GRUB](https://github.com/fehawen/arch-guide#72-partitioning-for-grub)
+	* 7.3. [Partitioning for systemd](https://github.com/fehawen/arch-guide#73-partitioning-for-systemd)
+8. [Install Base system](https://github.com/fehawen/arch-guide#8-install-base-system)
+9. [Configure Installation](https://github.com/fehawen/arch-guide#9-configure-installation)
+10. [Install Bootloader](https://github.com/fehawen/arch-guide#10-install-bootloader)
+	* 10.1. [GRUB](https://github.com/fehawen/arch-guide#101-grub)
+	* 10.2. [systemd](https://github.com/fehawen/arch-guide#102-systemd-boot)
 <!-- 7. [MacBook - Notes on Broadcom 43xx Chipsets](https://github.com/fehawen/arch-guide#7-notes-on-macbook-broadcom-43xx-chipsets)
 8. [MacBook 6,1 (EFI / systemd-boot)](https://github.com/fehawen/arch-guide#8-macbook-61)
 9. [MacBook Pro 11,1 (EFI / systemd boot)](https://github.com/fehawen/arch-guide#9-macbook-pro-111) -->
@@ -101,9 +102,29 @@ You can also spam something like `F10`, which'll give you a menu form which you'
 
 Exactly which key brings up said menus on startup varies, so a quick search on your specific machine might be necessary.
 
+### 3. UEFI or BIOS
+
+Once you have your Live USB with Arch Linux on it, and are able to successfully boot from it, you'll want to check if you need a `UEFI` system or a `BIOS` system.
+
+```bash
+$ ls /sys/firmware/efi/efivars
+```
+
+If the command returns a list of files, your system uses **UEFI**. And although you might still be able to use BIOS in what's called `Legacy` mode, let's for the sake of simplicity stick to the rule that if your system supports UEFI, you use UEFI.
+
+If the command does not return a list of files however, and instead returns something like `ls: cannot access '/sys/firmware/efi/efivars': No such file or directory`, then you know for certain that your system *does not* use UEFI, meaning you'll need to use `BIOS`. Sure, there might be certain options and ways to solve EFI compatibility should you wish to do so, but let's again stick to the rule that if your system supports UEFI, you use UEFI; if it doesn't support UEFI, you use BIOS.
+
+*On a side note*, just for the sake of educating myself a bit here, as an alternative to using `ls /sys/firmware/efi/efivars` you can instead run the following command, which'll work just as well.
+
+```bash
+$ efivar -l
+```
+
+If this command returns something like `efivar: error listing variables: Function not implemented`, then your system uses **BIOS**. Otherwise, it'll return the same list of files as the `ls /sys/...` command would've done, meaning your system uses **UEFI**.
+
 ## Installation
 
-### 3. Keymap
+### 4. Keymap
 
 Make typing commands a bit easier by setting a temporary keymap (Swedish layout in my case) for the current session.
 
@@ -119,7 +140,7 @@ $ ls /usr/share/kbd/keymaps/
 
 Permanent keymap/keyboard layout will be set later on.
 
-### 4. Font Size
+### 5. Font Size
 
 If your on e.g. a HiDPI/Retina/QHD/UHD or whatever screen with insane resolution, the font size might look retardedly tiny, making you squint like a madman.
 
@@ -135,7 +156,7 @@ Or replace `sun12x24` with whatever font or size you prefer, listing avaiable fo
 $ fc-list
 ```
 
-### 5. Internet Connection
+### 6. Internet Connection
 
 Depending on the situation, hardware, prerequisites and preference, set up a connection using either `ethernet` or `wi-fi`.
 
@@ -143,7 +164,7 @@ If you for some reason – adaptor issues, lack of ports, forgot to pay the inte
 
 Thethering should work fine, at least if it's an **Android** phone (or so I've heard). If it's an **iPhone** you're currently sporting however, then perhaps you ought to read [this](https://wiki.archlinux.org/index.php/IPhone_tethering).
 
-#### 5.1. Ethernet
+#### 6.1. Ethernet
 
 Detect your network interface, called something like `enp0s25` or whatever.
 
@@ -168,9 +189,9 @@ $ ping 5 8.8.8.8
 $ ping -c 5 8.8.8.8
 ```
 
-#### 5.2. Wi-Fi
+#### 6.2. Wi-Fi
 
-##### 5.2.1 wpa_supplicant
+##### 6.2.1 wpa_supplicant
 
 Check the wireless card status.
 
@@ -244,13 +265,13 @@ Use `-r` flag to release private IP address, when/if needed.
 $ dhclient <interface> -r
 ```
 
-##### 5.2.2. wifimenu
+##### 6.2.2. wifimenu
 
 *To be written.*
 
-### 6. Partioning
+### 7. Partioning
 
-#### 6.1. Notes
+#### 7.1. Notes
 
 Some notes on partitioning, for myself to remember.
 
@@ -276,7 +297,7 @@ Some notes on partitioning, for myself to remember.
 
 		* Supports *GPT* only.
 
-#### 6.2. Partitioning for GRUB
+#### 7.2. Partitioning for GRUB
 
 List all drives, like `/dev/sda1` and `/dev/sda2` etc.
 
@@ -354,11 +375,11 @@ Last, let's get our swagger on by swapping on the `SWAP`.
 $ swapon /dev/sda1
 ```
 
-#### 6.3. Partitioning for systemd
+#### 7.3. Partitioning for systemd
 
 *To be written.*
 
-### 7. Install Base System
+### 8. Install Base System
 
 Install the `base` system, as well as `base-devel` for dependency coverage.
 
@@ -368,7 +389,7 @@ You can add any additional packages at this as well, such as e.g. `nvim` and wha
 $ pacstrap /mnt base base-devel
 ```
 
-### 8. Configure Installation
+### 9. Configure Installation
 
 Get *root* access to the system itself.
 
@@ -483,9 +504,9 @@ To unlock it, whenever needed, use the `-u` flag.
 $ sudo passwd -u root
 ```
 
-### 9. Install Bootloader
+### 10. Install Bootloader
 
-#### 9.1. GRUB
+#### 10.1. GRUB
 
 Only do this if you followed the [Partitioning for GRUB]() step.
 
