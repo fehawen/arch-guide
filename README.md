@@ -104,13 +104,15 @@ Exactly which key brings up said menus on startup varies, so a quick search on y
 
 ### 3. UEFI or BIOS
 
-Once you have your Live USB with Arch Linux on it, and are able to successfully boot from it, you'll want to check if you need a `UEFI` system or a `BIOS` system.
+Once you have your Live USB with Arch Linux and are able to successfully boot from it, you'll have to check if you need to use `UEFI` or `BIOS` before setting up the system's boot process.
 
 ```bash
 $ ls /sys/firmware/efi/efivars
 ```
 
-If the command returns a list of files, your system uses **UEFI**. And although you might still be able to use BIOS in what's called `Legacy` mode, let's for the sake of simplicity stick to the rule that if your system supports UEFI, you use UEFI.
+If the command returns a list of files, your system uses **UEFI**.
+
+Although you might still be able to use BIOS in what's called `Legacy` mode – even if your system uses UEFI – we won't go into any details about that here, and for the sake of simplicity just stick to the rule that if your system uses UEFI, you setup your Arch installation using UEFI.
 
 If the command does not return a list of files however, and instead returns something like `ls: cannot access '/sys/firmware/efi/efivars': No such file or directory`, then you know for certain that your system *does not* use UEFI, meaning you'll need to use `BIOS`. Sure, there might be certain options and ways to solve EFI compatibility should you wish to do so, but let's again stick to the rule that if your system supports UEFI, you use UEFI; if it doesn't support UEFI, you use BIOS.
 
