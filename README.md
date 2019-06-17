@@ -16,32 +16,42 @@ But, I can't be arsed to memorize all the darn commands and steps and options an
 
 ## Table of Contents
 
-[**Preparations**](https://github.com/fehawen/arch-guide#preparations)
+[**Preparation**](https://github.com/fehawen/arch-guide#preparation)
 
-1. [Installation Medium](https://github.com/fehawen/arch-guide#1-installation-medium)
+1. [Creating a Live USB](https://github.com/fehawen/arch-guide#1-creating-a-live-usb)
+	* 1.1. [Terminal](https://github.com/fehawen/arch-guide#11-terminal)
+		* 1.1.1. [macOS](https://github.com/fehawen/arch-guide#111-macos)
+		* 1.1.2. [Linux](https://github.com/fehawen/arch-guide#112-linux)
+		* 1.1.3. [Linux](https://github.com/fehawen/arch-guide#113-windows)
+	* 1.2. [GUI](https://github.com/fehawen/arch-guide#12-GUI)
 2. [Booting into Arch](https://github.com/fehawen/arch-guide#2-booting-into-arch)
-3. [Keymap](https://github.com/fehawen/arch-guide#3-keymap)
-4. [Internet Connection](https://github.com/fehawen/arch-guide#4-internet-connection)
-	* 4.1. [Ethernet](https://github.com/fehawen/arch-guide#41-ethernet)
-	* 4.2. [Wi-Fi](https://github.com/fehawen/arch-guide#42-wi-fi)
-		* 4.2.1 [wpa_supplicant](https://github.com/fehawen/arch-guide#421-wpa_supplicant)
-		* 4.2.2 [wifimenu](https://github.com/fehawen/arch-guide#421-wpa_supplicant)
+	* 2.1. [Apple](https://github.com/fehawen/arch-guide#21-apple)
+	* 2.2. [Others](https://github.com/fehawen/arch-guide#22-others)
 
 [**Installation**](https://github.com/fehawen/arch-guide#installation)
 
-<!-- TODO: Rewrite for correctness -->
-5. [Notes on Partitioning](https://github.com/fehawen/arch-guide#installation)
-6. [Generic (GRUB)](https://github.com/fehawen/arch-guide#6-generic-grub)
-	* 6.1. [Partitioning](https://github.com/fehawen/arch-guide#61-partitioning)
-	* 6.2. [Format & Mount](https://github.com/fehawen/arch-guide#62-format--mount)
-	* 6.3. [Install Base system](https://github.com/fehawen/arch-guide#63-install-base-system)
-	* 6.4. [Configure Installation](https://github.com/fehawen/arch-guide#64-configure-installation)
-7. [MacBook - Notes on Broadcom 43xx Chipsets](https://github.com/fehawen/arch-guide#7-notes-on-macbook-broadcom-43xx-chipsets)
+3. [Keymap](https://github.com/fehawen/arch-guide#3-keymap)
+4. [Font Size](https://github.com/fehawen/arch-guide#4-font-size)
+5. [Internet Connection](https://github.com/fehawen/arch-guide#4-internet-connection)
+	* 5.1. [Ethernet](https://github.com/fehawen/arch-guide#51-ethernet)
+	* 5.2. [Wi-Fi](https://github.com/fehawen/arch-guide#52-wi-fi)
+		* 5.2.1 [wpa_supplicant](https://github.com/fehawen/arch-guide#521-wpa_supplicant)
+		* 5.2.2 [wifimenu](https://github.com/fehawen/arch-guide#522-wifimenu)
+6. [Partitioning](https://github.com/fehawen/arch-guide#partitioning)
+	* 6.1. [Notes](https://github.com/fehawen/arch-guide#61-notes)
+	* 6.2. [Partitioning for GRUB](https://github.com/fehawen/arch-guide#62-partitioning-for-grub)
+	* 6.3. [Partitioning for systemd](https://github.com/fehawen/arch-guide#63-partitioning-for-systemd)
+7. [Install Base system](https://github.com/fehawen/arch-guide#7-install-base-system)
+8. [Configure Installation](https://github.com/fehawen/arch-guide#8-configure-installation)
+9. [Install Bootloader](https://github.com/fehawen/arch-guide#9-install-bootlader)
+	* 9.1. [GRUB](https://github.com/fehawen/arch-guide#91-grub)
+	* 9.2. [systemd](https://github.com/fehawen/arch-guide#92-systemd)
+<!-- 7. [MacBook - Notes on Broadcom 43xx Chipsets](https://github.com/fehawen/arch-guide#7-notes-on-macbook-broadcom-43xx-chipsets)
 8. [MacBook 6,1 (EFI / systemd-boot)](https://github.com/fehawen/arch-guide#8-macbook-61)
-9. [MacBook Pro 11,1 (EFI / systemd boot)](https://github.com/fehawen/arch-guide#9-macbook-pro-111)
+9. [MacBook Pro 11,1 (EFI / systemd boot)](https://github.com/fehawen/arch-guide#9-macbook-pro-111) -->
 
 
-## Preparations
+## Preparation
 
 ### 1. Creating a Live USB
 
@@ -71,7 +81,7 @@ You're on Windows, seriously? My sincere apologies. At least I'm glad you're con
 
 Just have a look [here](https://wiki.archlinux.org/index.php/USB_flash_installation_media#In_Windows) and be done with it.
 
-##### 1.1.4. GUI
+#### 1.2. GUI
 
 For a GUI way of doing it, regardless of whether you're on macOS, Linux or Windows, you can use something like [Etcher](https://wiki.archlinux.org/index.php/USB_flash_installation_media#Using_etcher), which does it all for you in a self-explanatory manner.
 
