@@ -91,7 +91,6 @@ You can also spam something like `F10`, which'll give you a menu form which you'
 
 Exactly which key brings up said menus on startup varies, so a quick search on your specific machine might be necessary.
 
-
 ## Installation
 
 ### 3. Keymap
@@ -134,7 +133,7 @@ If you for some reason – adaptor issues, lack of ports, forgot to pay the inte
 
 Thethering should work fine, at least if it's an **Android** phone (or so I've heard). If it's an **iPhone** you're currently sporting however, then perhaps you ought to read [this](https://wiki.archlinux.org/index.php/IPhone_tethering).
 
-### 4.1. Ethernet
+#### 5.1. Ethernet
 
 Detect your network interface, called something like `enp0s25` or whatever.
 
@@ -159,9 +158,9 @@ $ ping 5 8.8.8.8
 $ ping -c 5 8.8.8.8
 ```
 
-#### 4.2. Wi-Fi
+#### 5.2. Wi-Fi
 
-##### 4.2.1 wpa_supplicant
+##### 5.2.1 wpa_supplicant
 
 Check the wireless card status.
 
@@ -235,13 +234,13 @@ Use `-r` flag to release private IP address, when/if needed.
 $ dhclient <interface> -r
 ```
 
-##### 4.2.2. wifimenu
+##### 5.2.2. wifimenu
 
 *To be written.*
 
-### 5. Partioning
+### 6. Partioning
 
-#### 5.1. Notes
+#### 6.1. Notes
 
 Some notes on partitioning, for myself to remember.
 
@@ -267,7 +266,7 @@ Some notes on partitioning, for myself to remember.
 
 		* Supports *GPT* only.
 
-#### 5.2. Partitioning for GRUB
+#### 6.2. Partitioning for GRUB
 
 List all drives, like `/dev/sda1` and `/dev/sda2` etc.
 
@@ -345,11 +344,11 @@ Last, let's get our swagger on by swapping on the `SWAP`.
 $ swapon /dev/sda1
 ```
 
-#### 5.3. Partitioning for systemd
+#### 6.3. Partitioning for systemd
 
 *To be written.*
 
-### 6. Install Base System
+### 7. Install Base System
 
 Install the `base` system, as well as `base-devel` for dependency coverage.
 
@@ -359,7 +358,7 @@ You can add any additional packages at this as well, such as e.g. `nvim` and wha
 $ pacstrap /mnt base base-devel
 ```
 
-### 7. Configure Installation
+### 8. Configure Installation
 
 Get *root* access to the system itself.
 
@@ -474,9 +473,9 @@ To unlock it, whenever needed, use the `-u` flag.
 $ sudo passwd -u root
 ```
 
-### 8. Install Bootloader
+### 9. Install Bootloader
 
-#### 8.1. GRUB
+#### 9.1. GRUB
 
 Only do this if you followed the [Partitioning for GRUB]() step.
 
@@ -528,7 +527,7 @@ Reboot into your new installation, making sure to remove the installation media 
 $ reboot
 ```
 
-#### 8.2. systemd-boot
+#### 9.2. systemd-boot
 
 *To be written.*
 
