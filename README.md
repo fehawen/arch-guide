@@ -1,6 +1,6 @@
 <h1 align="center">
 	<a href="https://github.com/fehawen/arch-guide">
-		<img alt="arch rice" src="https://user-images.githubusercontent.com/36552788/51067962-869ce980-1617-11e9-892b-53df540776b5.png" width="350">
+		<img alt="arch rice" src="https://user-images.githubusercontent.com/36552788/59663744-f6f3fc00-91af-11e9-9386-bd18df3ae57a.png" width="600">
 	</a>
 	<br>Arch Linux
 	<br>Installation Guide
@@ -12,9 +12,7 @@ Yes, yes, I know. RTFM and all that crap. Some hardcore Linux users out there mi
 
 But, I can't be arsed to memorize all the darn commands and steps and options and keep-in-minds and whatnots, and I don't fancy having a gazillion browser tabs open whenever I need to reinstall it, so I'll do what's forbidden and put together my own little cheatsheet here. Don't be haters, alligators.
 
-# Install
-
-## Table of Contents
+# Table of Contents
 
 [**Preparation**](https://github.com/fehawen/arch-guide#preparation)
 
@@ -52,15 +50,15 @@ But, I can't be arsed to memorize all the darn commands and steps and options an
 9. [MacBook Pro 11,1 (EFI / systemd boot)](https://github.com/fehawen/arch-guide#9-macbook-pro-111) -->
 
 
-## Preparation
+# Preparation
 
-### 1. Creating a Live USB
+## 1. Creating a Live USB
 
 Grab a USB stick, download the [Arch ISO](https://www.archlinux.org/download/), and get crackin'.
 
-#### 1.1 Terminal
+### 1.1 Terminal
 
-##### 1.1.1. macOS
+#### 1.1.1. macOS
 
 Give your terminal the following to chew on, keeping in mind to replace **<X>** with the number that points to the disk that is your USB stick. And wahtever you do, don't get that number wrong, or you'll wipe out whichever disk you accidentally entered. Don't sweat it.
 
@@ -70,31 +68,29 @@ $ diskutil unmountDisk /dev/disk<X>
 $ sudo dd if=path/to/arch.iso of=/dev/rdisk<X> bs=1m
 ```
 
-##### 1.1.2. Linux
+#### 1.1.2. Linux
 
 If you're on a Linux system, there are a number of options such as `unetbootin` and `ddrescue`, to name a few.
 
 Have a look [here](https://wiki.archlinux.org/index.php/USB_flash_installation_media#In_GNU/Linux) for more information.
 
-##### 1.1.3. Windows
+#### 1.1.3. Windows
 
-You're on Windows, seriously? My sincere apologies. At least I'm glad you're considering switching to Linux, or any \*NIX system for that matter.
+If you're on Windows, have a look [here](https://wiki.archlinux.org/index.php/USB_flash_installation_media#In_Windows) for more information.
 
-Just have a look [here](https://wiki.archlinux.org/index.php/USB_flash_installation_media#In_Windows) and be done with it.
-
-#### 1.2. GUI
+### 1.2. GUI
 
 For a GUI way of doing it, regardless of whether you're on macOS, Linux or Windows, you can use something like [Etcher](https://wiki.archlinux.org/index.php/USB_flash_installation_media#Using_etcher), which does it all for you in a self-explanatory manner.
 
-### 2. Booting into Arch
+## 2. Booting into Arch
 
-#### 2.1. Apple
+### 2.1. Apple
 
 Reboot your computer and press **C** to boot directly from a second boot device – in this case your Live USB.
 
 You can also press **Option** (i.e. the **alt** key) to enter the boot menu, from where you acan choose your installation media – again, your Live USB in this case.
 
-#### 2.2. Others
+### 2.2. Others
 
 On other systems/machines, changing the boot order or boot device is done in the BIOS settings menu, which can be accessed by spamming something like `F2` or `F6` on startup.
 
@@ -102,7 +98,7 @@ You can also spam something like `F10`, which'll give you a menu form which you'
 
 Exactly which key brings up said menus on startup varies, so a quick search on your specific machine might be necessary.
 
-### 3. UEFI or BIOS
+## 3. UEFI or BIOS
 
 Once you have your Live USB with Arch Linux and are able to successfully boot from it, you'll have to check if you need to use `UEFI` or `BIOS` before setting up the system's boot process.
 
@@ -124,9 +120,9 @@ $ efivar -l
 
 If this command returns something like `efivar: error listing variables: Function not implemented`, then your system uses **BIOS**. Otherwise, it'll return the same list of files as the `ls /sys/...` command would've done, meaning your system uses **UEFI**.
 
-## Installation
+# Installation
 
-### 4. Keymap
+## 4. Keymap
 
 Make typing commands a bit easier by setting a temporary keymap (Swedish layout in my case) for the current session.
 
@@ -142,7 +138,7 @@ $ ls /usr/share/kbd/keymaps/
 
 Permanent keymap/keyboard layout will be set later on.
 
-### 5. Font Size
+## 5. Font Size
 
 If your on e.g. a HiDPI/Retina/QHD/UHD or whatever screen with insane resolution, the font size might look retardedly tiny, making you squint like a madman.
 
@@ -158,7 +154,7 @@ Or replace `sun12x24` with whatever font or size you prefer, listing avaiable fo
 $ fc-list
 ```
 
-### 6. Internet Connection
+## 6. Internet Connection
 
 Depending on the situation, hardware, prerequisites and preference, set up a connection using either `ethernet` or `wi-fi`.
 
@@ -166,7 +162,7 @@ If you for some reason – adaptor issues, lack of ports, forgot to pay the inte
 
 Thethering should work fine, at least if it's an **Android** phone (or so I've heard). If it's an **iPhone** you're currently sporting however, then perhaps you ought to read [this](https://wiki.archlinux.org/index.php/IPhone_tethering).
 
-#### 6.1. Ethernet
+### 6.1. Ethernet
 
 Detect your network interface, called something like `enp0s25` or whatever.
 
@@ -191,9 +187,9 @@ $ ping 5 8.8.8.8
 $ ping -c 5 8.8.8.8
 ```
 
-#### 6.2. Wi-Fi
+### 6.2. Wi-Fi
 
-##### 6.2.1 wpa_supplicant
+#### 6.2.1 wpa_supplicant
 
 Check the wireless card status.
 
@@ -267,13 +263,13 @@ Use `-r` flag to release private IP address, when/if needed.
 $ dhclient <interface> -r
 ```
 
-##### 6.2.2. wifimenu
+#### 6.2.2. wifimenu
 
 *To be written.*
 
-### 7. Partioning
+## 7. Partioning
 
-#### 7.1. Notes
+### 7.1. Notes
 
 Some notes on partitioning, for myself to remember.
 
@@ -299,7 +295,7 @@ Some notes on partitioning, for myself to remember.
 
 		* Supports *GPT* only.
 
-#### 7.2. Partitioning for GRUB
+### 7.2. Partitioning for GRUB
 
 List all drives, like `/dev/sda1` and `/dev/sda2` etc.
 
@@ -377,11 +373,11 @@ Last, let's get our swagger on by swapping on the `SWAP`.
 $ swapon /dev/sda1
 ```
 
-#### 7.3. Partitioning for systemd
+### 7.3. Partitioning for systemd
 
 *To be written.*
 
-### 8. Install Base System
+## 8. Install Base System
 
 Install the `base` system, as well as `base-devel` for dependency coverage.
 
@@ -391,7 +387,7 @@ You can add any additional packages at this as well, such as e.g. `nvim` and wha
 $ pacstrap /mnt base base-devel
 ```
 
-### 9. Configure Installation
+## 9. Configure Installation
 
 Get *root* access to the system itself.
 
@@ -506,9 +502,9 @@ To unlock it, whenever needed, use the `-u` flag.
 $ sudo passwd -u root
 ```
 
-### 10. Install Bootloader
+## 10. Install Bootloader
 
-#### 10.1. GRUB
+### 10.1. GRUB
 
 Only do this if you followed the [Partitioning for GRUB]() step.
 
@@ -560,32 +556,6 @@ Reboot into your new installation, making sure to remove the installation media 
 $ reboot
 ```
 
-#### 9.2. systemd-boot
+### 10.2. systemd-boot
 
 *To be written.*
-
-### ?. Make/Model Related Issues and Tweaks
-
-#### ?.?. Dell
-
-##### ?.?.?. Dell XPS 13" 9343
-
-#### ?.?. MacBook
-
-##### ?.?.?. MacBook Broadcom 43xx Chipsets
-
-As also mentioned further down, the MacBooks with `Broadcom 43xx` chipsets will most likely require a [proprietary driver](https://wiki.archlinux.org/index.php/Broadcom_wireless) in order to be supported. If it's working out-of-the-box (i.e. wireless available from the installer), you may not have to worry about — it might be supported by the open source `brcmfac`, included by default in the kernel. Have a look at the [brcm80211](https://wiki.archlinux.org/index.php/Broadcom_wireless#brcm80211) section for details.
-
-##### ?.?.?. MacBook 6,1
-
-My ragged old **MacBook 6,1 (Polycarbonate Unibody, 13-inch, Late 2009, Nvidia GeForce 9400M GPU)** features an `AirPort Extreme (0x14E4, 0x93)` wireless card with `Broadcom BCM43xx 1.0 (5.106.98.102.30)` firmware version.
-
-For firmware related issues and updates, have a look at the [b43-firmware](https://aur.archlinux.org/packages/b43-firmware/) package.
-
-Some relevant info might (perhaps) also be found in the [MacBook5,2](https://wiki.archlinux.org/index.php/MacBook5,2_(early-mid_2009)) Arch wiki article.
-
-##### ?.?.?. MacBook Pro 11,1
-
-My still-in-good-shape workhorse **MacBook Pro 11,1 (Retina, 13-inch, Late 2013, Intel GPU)** fetaures an `AirPort Extreme (0x14E4, 0x112)` wireless card with `Broadcom BCM43xx 1.0 (7.77.37.31.1a9)` firmware version.
-
-The [MacBookPro11,x](https://wiki.archlinux.org/index.php/MacBookPro11,x) Arch wiki article includes most, if not all, of what's worth knowing about issues etc.
