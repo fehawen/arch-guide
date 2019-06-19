@@ -8,9 +8,11 @@
 
 # About
 
-Yes, yes, I know. RTFM and all that crap. Some hardcore Linux users out there might frown upon the fact that I'm writing my own installation guide/notes (and sharing them with the rest of the world - OMG! Open Source!? ) instead of reading the [Bible](https://wiki.archlinux.org/index.php/installation_guide) from top to bottom, as if installing an OS is the only thing ever worth spending your time on doing.
+Yes, yes, I know. RTFM and all that... Some folks out there might frown upon the fact that I'm writing my own installation guide/notes (and sharing them with the rest of the world - OMG! Open Source!?) instead of reading the [Bible](https://wiki.archlinux.org) from cover to cover, as if installing an OS is the only thing ever worth spending time on.
 
-But, I can't be arsed to memorize all the darn commands and steps and options and keep-in-minds and whatnots, and I don't fancy having a gazillion browser tabs open whenever I need to reinstall it, so I'll do what's forbidden and put together my own little cheatsheet here. Don't be haters, alligators.
+But, I can't be arsed to memorize all the darn commands and steps and options and keep-in-minds and whatnots, and I don't fancy having a gazillion browser tabs open whenever I need to reinstall it, so I'll do what's forbidden and put together my own little cheatsheet here.
+
+Don't be haters, alligators.
 
 # Table of Contents
 
@@ -45,10 +47,6 @@ But, I can't be arsed to memorize all the darn commands and steps and options an
 10. [Install Bootloader](https://github.com/fehawen/arch-guide#10-install-bootloader)
 	* 10.1. [GRUB](https://github.com/fehawen/arch-guide#101-grub)
 	* 10.2. [systemd](https://github.com/fehawen/arch-guide#102-systemd-boot)
-<!-- 7. [MacBook - Notes on Broadcom 43xx Chipsets](https://github.com/fehawen/arch-guide#7-notes-on-macbook-broadcom-43xx-chipsets)
-8. [MacBook 6,1 (EFI / systemd-boot)](https://github.com/fehawen/arch-guide#8-macbook-61)
-9. [MacBook Pro 11,1 (EFI / systemd boot)](https://github.com/fehawen/arch-guide#9-macbook-pro-111) -->
-
 
 # Preparation
 
