@@ -60,7 +60,7 @@ Grab a USB stick, download the [Arch ISO](https://www.archlinux.org/download/), 
 
 Give your terminal the following to chew on, keeping in mind to replace **<X>** with the number that points to the disk that is your USB stick. And wahtever you do, don't get that number wrong, or you'll wipe out whichever disk you accidentally entered. Don't sweat it.
 
-```
+```bash
 $ diskutil list
 $ diskutil unmountDisk /dev/disk<X>
 $ sudo dd if=path/to/arch.iso of=/dev/rdisk<X> bs=1m
@@ -164,24 +164,24 @@ Thethering should work fine, at least if it's an **Android** phone (or so I've h
 
 Detect your network interface, called something like `enp0s25` or whatever.
 
-```
+```bash
 $ ip link
 ```
 
-Connect the interface to ze internets using `dhcpcd`.
+Connect the interface to ze internetz using `dhcpcd`.
 
-```
+```bash
 $ dhcpcd <interface>
 ```
 
-Ping something (hey, it rhymes!) to verify your connection, like ping Google 5 times.
+Ping something (hey, it rhymes!) to verify your connection, like ping G****e 5 times.
 
-```
+```bash
 $ ping 5 8.8.8.8
 ```
-*Or perhaps the -c flag for count is required, I can never remember.*
+*Or perhaps the **-c** flag for count is required, I can never remember.*
 
-```
+```bash
 $ ping -c 5 8.8.8.8
 ```
 
@@ -191,35 +191,37 @@ $ ping -c 5 8.8.8.8
 
 Check the wireless card status.
 
-```
+```bash
 $ rfkill list
 ```
 
 If it's blocked, try to unblock it.
 
-```
+```bash
 $ rfkill unblock wifi
 ```
 
 Find name of wireless interface, usually something like `wlp2s0`, `wlp3s0b1` or whatevs.
 
-```
+```bash
 $ iwconfig
 ```
 
 Scan for wireless networks, unless you already know yours.
 
-```
+```bash
 $ iwlist <interface> scan
 ```
-Or use.
-```
+
+*Or use.*
+
+```bash
 $ iwlist <interface> scan | grep ESSID
 ```
 
 Create a `wpa_supplicant.conf` file with `wpa_passphrase`.
 
-```
+```bash
 $ wpa_passphrase "<ESSID>" "<passphrase>" | tee /etc/wpa_supplicant.conf
 ```
 
@@ -227,37 +229,37 @@ Connect to the wireless access point.
 
 *Running in foreground.*
 
-```
+```bash
 $ wpa_supplicant -c /etc/wpa_supplicant.conf
 ```
 
 *Running in background.*
 
-```
+```bash
 $ wpa_supplicant -B -c /etc/wpa_supplicant.conf
 ```
 
 Check wireless interface status again, to verify.
 
-```
+```bash
 $ iwconfig
 ```
 
 Obtain private IP address from DHCP server.
 
-```
+```bash
 $ dhclient <interface>
 ```
 
 Show obtained private IP address.
 
-```
+```bash
 $ ifconfig <interface>
 ```
 
 Use `-r` flag to release private IP address, when/if needed.
 
-```
+```bash
 $ dhclient <interface> -r
 ```
 
@@ -297,7 +299,7 @@ Some notes on partitioning, for myself to remember.
 
 List all drives, like `/dev/sda1` and `/dev/sda2` etc.
 
-```
+```bash
 $ fdisk -l
 ```
 
@@ -305,7 +307,7 @@ Note that e.g. `/dev/sda<number>` are the partitions, i.e. `/dev/sda` is the mai
 
 Next, we'll proceed using the `cfdisk` partition manager.
 
-```
+```bash
 $ cfdisk /dev/sda
 ```
 
@@ -315,13 +317,13 @@ Next, create a `SWAP` partition, doing it first to simply use the remaining free
 
 In `cfdisk`, choose `New -> Primary`.
 
-```
+```bash
 Size (in MB): <size>
 ```
 
 The appropriate/necessary size of the SWAP partition is a neverending discussion – some say half as RAM, some say same as RAM, some say 150% of RAM, and a selected few paranoid androids even say twice as RAM. Me, I'll trust the argument that SWAP should be larger than RAM in order for hibernation, etc, to work properly, so I'll keep it at either `RAM + 2GB`, or `RAM * 150%` to be sure, unless I have like 32GB RAM and would end up with a ridiculously large 34GB or 48GB SWAP drive, in which case I would reconsider its size or whether I'd even need it. But for the SWAP to be 12GB, i.e. `12288 MB`, with 8GB RAM sounds somewhat reasonable to me.
 
-```
+```bash
 Beginning or End of Free Space?
 ```
 
@@ -329,7 +331,7 @@ Set this to `END`. Don't ask, just do it.
 
 Next, create the `/root` partition in `cfdisk` with `New -> Primary` and give it the remaining free space.
 
-```
+```bash
 Size (in MB): <remaining>
 ```
 
@@ -337,7 +339,7 @@ Remember to mark this partition as `Bootable`, because this is where the bootloa
 
 Next, select the `SWAP` and set its type to `82` in `Options -> Type`.
 
-```
+```bash
 Enter filesystem type: 82
 ```
 
@@ -349,25 +351,25 @@ We made the `SWAP` partition first, so that ought to be `/dev/sda1`, which'd mak
 
 Next, we'll format our `/root` partition to `ext4`.
 
-```
+```bash
 $ mkfs.ext4 /dev/sda2
 ```
 
 Next, let's mount our `/root` to `/mnt`
 
-```
+```bash
 $ mount /dev/sda2 /mnt
 ```
 
 Then, let's make a swapfile on our `SWAP` partition.
 
-```
+```bash
 $ mkswap /dev/sda1
 ```
 
 Last, let's get our swagger on by swapping on the `SWAP`.
 
-```
+```bash
 $ swapon /dev/sda1
 ```
 
@@ -381,7 +383,7 @@ Install the `base` system, as well as `base-devel` for dependency coverage.
 
 You can add any additional packages at this as well, such as e.g. `nvim` and whatnot, but I'll leave that up to you. As long as you install the aforementioned `base` and `base-devel`, you're good for now.
 
-```
+```bash
 $ pacstrap /mnt base base-devel
 ```
 
@@ -389,19 +391,19 @@ $ pacstrap /mnt base base-devel
 
 Get *root* access to the system itself.
 
-```
+```bash
 $ arch-chroot /mnt
 ```
 
 Set locale by uncommenting preferred locale in `/etc/locale.gen`.
 
-```
+```bash
 $ nano /etc/locale.gen
 ```
 
 Here, you'll most likely want `UTF-8`, unless for some reason you require ISO.
 
-```
+```bash
 # en_US.UTF-8 UTF-8
 # en_US ISO-8859-1
 ...
@@ -411,13 +413,13 @@ sv_SE.UTF-8 UTF-8 # Uncomment preferred choice, e.g. Swedish for me
 
 Generate locale file.
 
-```
+```bash
 $ locale-gen
 ```
 
 Set selected locale upon boot by writing it to `locale.conf`, with `LANG=sv_SE.UTF-8` as example.
 
-```
+```bash
 $ echo LANG=sv_SE.UTF-8 > /etc/locale.conf
 ```
 
@@ -435,14 +437,14 @@ $ KEYMAP=sv-latin1
 
 Set timezone by symlinking the desired *zone* with *subzone* to `/etc/localtime`.
 
-```
+```bash
 # The -v flag is just for verbose output
 $ ln -sv /usr/share/zoneinfo/<zone>/<zubsone> /etc/localtime
 ```
 
 *If needed, look through `/usr/share/zoneinfo` first for *zone* and *subzone* options.
 
-```
+```bash
 $ cd /usr/share/zoneinfo && ls
 # or
 $ ls /usr/share/zoneinfo
@@ -450,13 +452,13 @@ $ ls /usr/share/zoneinfo
 
 Set hardware clock from current system time.
 
-```
+```bash
 $ hwclock --systohc --utc
 ```
 
 Set host name, replacing `<host_name>` with your preferred name.
 
-```
+```bash
 $ echo <host_name> > /etc/hostname
 ```
 
@@ -466,37 +468,37 @@ $ echo <host_name> > /etc/hostname
 
 Set new *root* password.
 
-```
+```bash
 $ passwd
 ```
 
 Create user account, replacing `<username>` and `<password>`... You know the drill by now.
 
-```
+```bash
 $ useradd -m -g users -G wheel -s /bin/bash <username> && passwd <password>
 ```
 
 Open `/etc/sudoers` with e.g. `nano` or whatever.
 
-```
+```bash
 $ nano /etc/sudoers
 ```
 
 Uncomment this line, somewhere at the end of that file, to allow the use of `sudo` commands without being asked for password all the time. And, you know, do it **at your own risk**, as you probably guessed.
 
-```
+```bash
 $ %wheel ALL=(ALL) NOPASSWD: ALL
 ```
 
 Next, lock the *root* account via `passwd`.
 
-```
+```bash
 $ passwd -l root
 ```
 
 To unlock it, whenever needed, use the `-u` flag.
 
-```
+```bash
 $ sudo passwd -u root
 ```
 
@@ -508,49 +510,49 @@ Only do this if you followed the [Partitioning for GRUB]() step.
 
 If you followed the [Partitioning for systemd]() step, the skip this section and proceed to the [systemd]() section.
 
-```
+```bash
 $ pacman -S grub-bios
 ```
 
 Install GRUB on your hard drive (not the partition itself).
 
-```
+```bash
 $ grub-install /dev/sda
 ```
 
 Generate *init* file for GRUB to load Linux.
 
-```
+```bash
 $ mkinitcpio -p linux
 ```
 
 Generate GRUB *config* file.
 
-```
+```bash
 $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 Exit current *chroot* session, as we're done here for now.
 
-```
+```bash
 $ exit
 ```
 
 Generate *fstab* file based on hard drive, for information about system partitions.
 
-```
+```bash
 $ genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
 Unmount *root* device.
 
-```
+```bash
 $ umount /mnt
 ```
 
 Reboot into your new installation, making sure to remove the installation media first.
 
-```
+```bash
 $ reboot
 ```
 
