@@ -559,3 +559,179 @@ $ reboot
 ### 10.2. systemd-boot
 
 *To be written.*
+
+# Dell XPS 13 (9343)
+
+## ? WiFi
+
+The Dell DW1560 802.11ac adapter (based on the Broadcom BCM4352 chip) requires `broadcom-wl` or `broadcom-wl-dkms`, and also `linux-headers` (even though it's listed as an optional dependency).
+
+See [Arch Wiki - Dell XPS 13 (9343)](https://wiki.archlinux.org/index.php/Dell_XPS_13_(9343)) and [Arch Wiki - Broadcom wireless](https://wiki.archlinux.org/index.php/Broadcom_wireless) for more information.
+
+# UEFI and systemd-boot with LVM and LUKS
+
+## Partition
+
+Use gdisk for partitioning.
+
+```bash
+$ gdisk /dev/sda
+# or, you know, might be something like
+$ gdisk /dev/nvme0n1
+```
+
+Create an empty GPT partition table.
+
+```bash
+$ o
+```
+
+Create a new EFI partition (512 MB).
+
+```bash
+$ n
+
+# Partition number (...):
+# First sector (...):
+Last sector (...): +512MiB
+
+Hex code or GUID (...): ef00
+```
+
+Create a new Linux LVM partition (REMAINING SPACE).
+
+```bash
+$ n
+
+# Partition number (...):
+# First sector (...):
+#Last sector (...):
+
+Hex code or GUID (...): 8e00
+```
+
+Write changes, i.e. execute partitioning.
+
+```bash
+$ w
+```
+
+## EFI File System
+
+Create FAT32 file system for EFI partition.
+
+```bash
+$ mkfs.fat -F32 /dev/sda1 # EFI partition created first, so it's 1
+```
+
+## LUKS Encryption
+
+Encrypt Linux LVM partition with LUKS.
+
+```bash
+$ cryptsetup luksFormat /dev/sda2 # LVM partition created second, so it's 2
+```
+
+Open encrypted partition to enable installation.
+
+```bash
+$ cryptsetup open --type luks /dev/sda2 lvm # Replace 'lvm' with preferred name
+```
+
+Check that it exists.
+
+```bash
+$ ls /dev/mapper/lvm # should return: /dev/mapper/lvm
+```
+
+Create physical volume on top of **/dev/mapper/lvm**.
+
+```bash
+$ pvcreate /dev/mapper/lvm
+```
+
+Create volume group.
+
+```bash
+$ vgcreate volume /dev/mapper/lvm # Replace 'volume' with preferred name
+```
+
+Create logical volume for **swap**.
+
+```bash
+# 12 GB (150% of 8 GB RAM) SWAP in the 'volume' group, named 'swap', which results in 'dev/mapper/volume-swap'
+$ lvcreate -L12G volume -n swap
+```
+
+Create logical volume for **root**.
+
+```bash
+# 30 GB root volume in the 'volume' group, named 'root', which results in 'dev/mapper/volume-root'
+$ lvcreate -L30G volume -n root
+```
+
+Create logical volume for **home**.
+
+```bash
+# Remaining space home volume in the 'volume' group, named 'home', which results in 'dev/mapper/volume-home'
+$ lvcreate -l 100%FREE volume -n home
+```
+
+## LVM File System
+
+Make SWAP for **swap**.
+
+```bash
+$ mkswap /dev/mapper/volume-swap
+```
+
+Make EXT4 file system for **root**.
+
+```bash
+$ mkfs.ext4 /dev/mapper/volume-root
+```
+
+Make EXT4 file system for **home**.
+
+```bash
+$ mkfs.ext4 /dev/mapper/volume-home
+```
+
+## Mount Volumes
+
+Mount **root** to **/mnt**.
+
+```bash
+$ mount /dev/mapper/volume-root /mnt
+```
+
+Make **/mnt/home** directory.
+
+```bash
+$ mkdir /mnt/home
+```
+
+Make **boot/mnt/boot** directory.
+
+```bash
+$ mkdir /mnt/boot
+```
+
+Mount **home** to **/mnt/home**
+
+```bash
+$ mount /dev/mapper/volume-home /mnt/home
+```
+
+Mount the **EFI** boot partition to **/mnt/boot**
+
+```bash
+# Note that we're using our EFI /dev/sda1 partition here, as it's only our encrypted LVM partition that keeps holds the volumes 'root' and 'home'
+$ mount /dev/sda1 /mnt/boot
+```
+
+Acivate **swap**.
+
+```bash
+$ swapon /dev/mapper/volume-swap
+```
