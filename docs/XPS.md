@@ -28,6 +28,15 @@ Installation guide for Arch Linux on a Dell XPS 13 (9343) using:
 		* 2.4.2. [Wifi](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#242-wifi)
 			* 2.4.2.1. [wpa_supplicant](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#2421-wpa_supplicant)
 			* 2.4.2.2. [wifi-menu](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#2422-wifi-menu)
+3. [Partitioning](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#3-partitioning)
+4. [EFI](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#4-efi)
+5. [LUKS](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#5-luks)
+6. [LVM](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#6-lvm)
+7. [Mount](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#7-mount)
+8. [Base](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#8-base)
+9. [fstab](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#9-fstab)
+10. [Configuration](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#10-configuration)
+11. [Bootlader](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#11-bootloader)
 
 ## 1. Issues
 
@@ -200,7 +209,7 @@ Connecting to a wireless network with `wifi-menu` is self-explanatory.
 $ wifi-menu
 </pre>
 
-## Partitioning
+## 3. Partitioning
 
 Use `gdisk` for partitioning.
 
@@ -246,7 +255,7 @@ Write changes, i.e. execute partitioning.
 $ w
 </pre>
 
-## EFI file system
+## 4. EFI
 
 Create `FAT32` file system for `EFI` partition.
 
@@ -255,7 +264,7 @@ Create `FAT32` file system for `EFI` partition.
 $ mkfs.fat -F32 /dev/sda1
 </pre>
 
-## LUKS encryption
+## 5. LUKS
 
 Encrypt Linux `LVM` partition with `LUKS`.
 
@@ -309,7 +318,7 @@ Create logical volume for *home*.
 $ lvcreate -l 100%FREE volume -n home
 </pre>
 
-## LVM device mapping
+## 6. LVM
 
 Make SWAP for *swap*.
 
@@ -329,9 +338,9 @@ Make EXT4 file system for *home*.
 $ mkfs.ext4 /dev/mapper/volume-home
 </pre>
 
-## Mount Volumes
+## 7. Mount
 
-Mount *root* to */mnt*.
+Mount `root` to `/mnt`.
 
 <pre>
 $ mount /dev/mapper/volume-root /mnt
@@ -362,13 +371,13 @@ Mount the *EFI* boot partition to */mnt/boot*
 $ mount /dev/sda1 /mnt/boot
 </pre>
 
-Acivate *swap*.
+Acivate `swap`.
 
 <pre>
 $ swapon /dev/mapper/volume-swap
 </pre>
 
-## Install base system
+## 8. Base
 
 Install the base system, including `base` and `base-devel`, along with whichever packages might be required at this point.
 
@@ -376,7 +385,7 @@ Install the base system, including `base` and `base-devel`, along with whichever
 $ pacstrap /mnt base base-devel network-manager nvim
 </pre>
 
-## Generate fstab
+## 9. fstab
 
 Take a peek to check that everything looks all right first.
 
@@ -390,7 +399,7 @@ Output `fstab` to `/mnt/etc/fstab`, with `-U` flag to invoke use of UUIDs.
 $ genfstab -U /mnt >> /mnt/etc/fstab
 </pre>
 
-## Configure installation
+## 10. Configuration
 
 Get `root` access to the system itself.
 
@@ -411,7 +420,7 @@ Set timezone by symlinking the desired `zone` with `subzone` to `/etc/localtime`
 $ ln -sv /usr/share/zoneinfo/<b>zone</b>/<b>zubsone</b> /etc/localtime
 </pre>
 
-*If needed, look through `/usr/share/zoneinfo` first for *zone* and *subzone* options.
+If needed, look through `/usr/share/zoneinfo` first for `zone` and `subzone` options.
 
 <pre>
 $ cd /usr/share/zoneinfo && ls
@@ -529,7 +538,7 @@ Next, regenerate our updated `mkinitcpio.conf`, which will regenrate our `initra
 $ mkinitcpio -p linux
 </pre>
 
-## Install bootloader
+## 11. Bootloader
 
 Install the `systemd` bootloader.
 
