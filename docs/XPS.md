@@ -285,7 +285,7 @@ Check that it exists.
 $ ls /dev/mapper/lvm # should return: /dev/mapper/lvm
 </pre>
 
-Create physical volume on top of */dev/mapper/lvm*.
+Create physical volume on top of `/dev/mapper/lvm`.
 
 <pre>
 $ pvcreate /dev/mapper/lvm
@@ -297,7 +297,7 @@ Create volume group.
 $ vgcreate volume /dev/mapper/lvm # Replace 'volume' with preferred name
 </pre>
 
-Create logical volume for *swap*.
+Create logical volume for `swap`.
 
 <pre>
 # 12 GB (150% of 8 GB RAM) SWAP in the 'volume' group, named 'swap', which results in 'dev/mapper/volume-swap'
@@ -311,7 +311,7 @@ Create logical volume for `root`.
 $ lvcreate -L30G volume -n root
 </pre>
 
-Create logical volume for *home*.
+Create logical volume for `home`.
 
 <pre>
 # Remaining space home volume in the 'volume' group, named 'home', which results in 'dev/mapper/volume-home'
@@ -320,19 +320,19 @@ $ lvcreate -l 100%FREE volume -n home
 
 ## 6. LVM
 
-Make SWAP for *swap*.
+Make SWAP for `swap`.
 
 <pre>
 $ mkswap /dev/mapper/volume-swap
 </pre>
 
-Make EXT4 file system for *root*.
+Make EXT4 file system for `root`.
 
 <pre>
 $ mkfs.ext4 /dev/mapper/volume-root
 </pre>
 
-Make EXT4 file system for *home*.
+Make EXT4 file system for `home`.
 
 <pre>
 $ mkfs.ext4 /dev/mapper/volume-home
@@ -346,25 +346,25 @@ Mount `root` to `/mnt`.
 $ mount /dev/mapper/volume-root /mnt
 </pre>
 
-Make */mnt/home* directory.
+Make `/mnt/home` directory.
 
 <pre>
 $ mkdir /mnt/home
 </pre>
 
-Make *boot/mnt/boot* directory.
+Make `boot/mnt/boot` directory.
 
 <pre>
 $ mkdir /mnt/boot
 </pre>
 
-Mount *home* to */mnt/home*
+Mount `home` to `/mnt/home`
 
 <pre>
 $ mount /dev/mapper/volume-home /mnt/home
 </pre>
 
-Mount the *EFI* boot partition to */mnt/boot*
+Mount the `EFI` boot partition to `/mnt/boot`
 
 <pre>
 # Note that we're using our EFI /dev/sda1 partition here, as it's only our encrypted LVM partition that keeps holds the volumes 'root' and 'home'
@@ -584,7 +584,7 @@ options cryptdevice=UUID=<b>XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</b>:volume root
 # <em>/dev/sda1</em> is our boot partition.
 </pre>
 
-Exit the *chroot* session.
+Exit the `chroot` session.
 
 <pre>
 $ exit
