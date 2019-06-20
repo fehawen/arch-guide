@@ -8,8 +8,8 @@
 
 <div align="center">
 	<h4>
-		<a href="./docs/XPS.md">XPS Install</a> |
-		<a href="./docs/CONFIGS.md">Configs</a>
+		<a href="./docs/INSTALL.md">Install</a> |
+		<a href="./docs/CONFIGURE.md">Configure</a>
 	</h4>
 </div>
 

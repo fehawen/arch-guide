@@ -1,0 +1,259 @@
+<h1 align="center">
+	<a href="https://github.com/fehawen/arch-guide/blob/master/docs/INSTALL.md">
+		<img alt="xps installation" src="https://user-images.githubusercontent.com/36552788/59856089-7df2d100-9376-11e9-906a-cc3f8a6d6001.png" width="250">
+	</a>
+	<br>
+	<br>
+	Arch Linux on Dell XPS 13 (9343)
+	</h1>
+
+## Installation
+
+Set temporary keymap.
+
+<pre>
+$ loadkeys sv-latin1
+</pre>
+
+Install font and editor for use during installation.
+
+<pre>
+$ pacman -S neovim terminus-font
+</pre>
+
+Set font for easier read.
+
+<pre>
+$ setfont ter-v22n
+</pre>
+
+Partition with gdisk.
+
+<pre>
+$ gdisk /dev/sda
+</pre>
+
+Create an empty GPT partition table.
+
+<pre>
+$ o
+</pre>
+
+Create a new EFI boot partition (512 MB).
+
+<pre>
+$ n
+
+Partition number (...):
+First sector (...):
+Last sector (...): +512MiB
+Hex code or GUID (...): ef00
+</pre>
+
+Create a new Linux Filesystem partition for the remaining space.
+
+<pre>
+$ n
+
+Partition number (...):
+First sector (...):
+Last sector (...):
+Hex code or GUID (...):
+</pre>
+
+Write changes to execute partitioning.
+
+<pre>
+$ w
+</pre>
+
+Make vfat file system for boot partition.
+
+<pre>
+$ mkfs.vfat /dev/sda1
+</pre>
+
+Make ext4 file system for main partition.
+
+<pre>
+$ mkfs.ext4 /dev/sda2
+</pre>
+
+Mount main partition.
+
+<pre>
+$ mount /dev/sda2 /mnt
+</pre>
+
+Create boot directory.
+
+<pre>
+$ mkdir /mnt/boot
+</pre>
+
+Mount boot partition.
+
+<pre>
+$ mount /dev/sda1 /mnt/boot
+</pre>
+
+Install base system.
+
+<pre>
+$ pacstrap /mnt base base-devel neovim
+</pre>
+
+Get root access to the system itself.
+
+<pre>
+$ arch-chroot /mnt
+</pre>
+
+Install additional packages.
+
+<pre>
+$ pacman -S networkmanager broadcom-wl linux-headers intel-ucode sudo
+</pre>
+
+Automatically start networkmanager on startup.
+
+<pre>
+$ systemctl enable NetworkManager
+</pre>
+
+Set timezone.
+
+<pre>
+$ rm /etc/localtime
+$ ln -sv /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+</pre>
+
+Set hardware clock.
+
+<pre>
+$ hwclock --systohc --utc
+</pre>
+
+Set locale.
+
+<pre>
+$ nvim /etc/locale.gen
+</pre>
+
+Uncomment preferred option.
+
+<pre>
+sv_SE.UTF-8 UTF-8
+</pre>
+
+Generate locale file.
+
+<pre>
+$ locale-gen
+</pre>
+
+Load selected locale on startup.
+
+<pre>
+$ echo LANG=sv_SE.UTF-8 > /etc/locale.conf
+</pre>
+
+Set permanent keymap for keyboard layout.
+
+<pre>
+$ nvim /etc/vconsole.conf
+</pre>
+
+Insert preferred keymap.
+
+<pre>
+$ KEYMAP=sv-latin1
+</pre>
+
+Create root password.
+
+<pre>
+$ passwd
+</pre>
+
+Set host name.
+
+<pre>
+$ echo <b>hostname</b> > /etc/hostname
+</pre>
+
+Create a non-root user.
+
+<pre>
+$ useradd -m -g users -G wheel -s /bin/bash <b>username</b>
+</pre>
+
+Create password for new user.
+
+<pre>
+$ passwd <b>username</b>
+</pre>
+
+Enable sudo commands without password.
+
+<pre>
+$ sudo EDITOR=nvim visudo
+</pre>
+
+Uncomment the following line.
+
+<pre>
+%wheel ALL=(ALL) NOPASSWD: ALL
+</pre>
+
+Lock the root account.
+
+<pre>
+$ passwd -l root
+</pre>
+
+Install bootloader.
+
+<pre>
+bootctl install
+</pre>
+
+Check that everything looks alright.
+
+<pre>
+$ cd /boot
+</pre>
+
+Setup loader configuration.
+
+<pre>
+$ nvim /boot/loader/loader.conf
+</pre>
+
+Add configuration details.
+
+<pre>
+default arch
+timeout 4
+console-mode max
+editor no
+</pre>
+
+Setup arch configuration entry.
+
+<pre>
+$ nvim /boot/loader/entries/arch.conf
+</pre>
+
+Add arch entry configuration details.
+
+<pre>
+title Arch Linux
+linux /vmlinuz-linux
+initrd /intel-ucode.img
+initrd /initramfs-linux.img
+options root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+
+# Read in /dev/sda2 PARTUUID
+:read ! blkid /dev/sda2
+</pre>
