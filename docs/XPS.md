@@ -407,10 +407,10 @@ Get `root` access to the system itself.
 $ arch-chroot /mnt
 </pre>
 
-Install additional packages.
+Install additional packages, noting that `broadcom-wl`and `linux-headers` are required for the `Broadcom BCM4352` based `Dell DW1560 802.11ac` adapter to work.
 
 <pre>
-$ pacman -S networkmanager sudo
+$ pacman -S networkmanager broadcom-wl linux-headers sudo
 </pre>
 
 Tell `systemd``to automatically start `networkmanager` on startup.
