@@ -379,10 +379,10 @@ $ swapon /dev/mapper/volume-swap
 
 ## 8. Base
 
-Install the base system, including `base` and `base-devel`, along with whichever packages might be required at this point.
+Install the base system, including `base` and `base-devel`, along with `nvim` for convenience.
 
 <pre>
-$ pacstrap /mnt base base-devel network-manager nvim
+$ pacstrap /mnt base base-devel nvim
 </pre>
 
 ## 9. fstab
@@ -411,6 +411,12 @@ Install additional packages.
 
 <pre>
 $ pacman -S networkmanager sudo
+</pre>
+
+Tell `systemd``to automatically start `networkmanager` on startup.
+
+<pre>
+$ systemctl enable NetworkManager
 </pre>
 
 Set timezone by symlinking the desired `zone` with `subzone` to `/etc/localtime`.
@@ -574,7 +580,8 @@ options cryptdevice=UUID=<b>XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</b>:volume root
 # Get the UUID from within <em>vim</em> or <em>nvim</em>.
 :read ! blkid /dev/sda2
 
-# NOTE: It's <em>/dev/sda2</em> due to that being our LUKS formatted LVM partition holding our encrypted <em>/root</em>, <em>/home</em> and <em>/swap</em> logical volumes, due to the <em>boot</em> partition being created first on <em>/dev/sda1</em>.
+# <em>/dev/sda2</em> is our LUKS formatted LVM partition.
+# <em>/dev/sda1</em> is our boot partition.
 </pre>
 
 Exit the *chroot* session.
