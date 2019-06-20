@@ -9,8 +9,8 @@
 
 <div align="center">
 	<h4>
-		<a href="./docs/DellXPS.md">Dell XPS</a> |
-		<a href="./docs/Config.md">Config</a>
+		<a href="./docs/XPS.md">XPS Install</a> |
+		<a href="./docs/CONFIGS.md">Configs</a>
 	</h4>
 </div>
 
