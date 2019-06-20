@@ -397,10 +397,10 @@ Take a peek to check that everything looks all right first.
 $ genfstab /mnt
 </pre>
 
-Output `fstab` to `/mnt/etc/fstab`, with `-U` flag to invoke use of UUIDs.
+Output `fstab` to `/mnt/etc/fstab`, with `-p` flag (default behaviour).
 
 <pre>
-$ genfstab -U /mnt >> /mnt/etc/fstab
+$ genfstab -p /mnt >> /mnt/etc/fstab
 </pre>
 
 ## 10. Configuration
@@ -411,10 +411,10 @@ Get `root` access to the system itself.
 $ arch-chroot /mnt
 </pre>
 
-Install additional packages, noting that `broadcom-wl`and `linux-headers` are required for the `Broadcom BCM4352` based `Dell DW1560 802.11ac` adapter to work.
+Install additional packages, noting that `broadcom-wl`and `linux-headers` are required for the `Broadcom BCM4352` based `Dell DW1560 802.11ac` adapter to work, and `ìntel-ucode``enables Intel microcode updates.
 
 <pre>
-$ pacman -S networkmanager broadcom-wl linux-headers sudo
+$ pacman -S networkmanager broadcom-wl linux-headers intel-ucode sudo
 </pre>
 
 Tell `systemd` to automatically start `networkmanager` on startup.
@@ -432,6 +432,10 @@ $ ln -sv /usr/share/zoneinfo/<b>zone</b>/<b>zubsone</b> /etc/localtime
 # You may get an error that the file already exists,
 # in which case you can use the <b>-f</b> flag for force
 $ ln -sfv /usr/share/zoneinfo/<b>zone</b>/<b>zubsone</b> /etc/localtime
+
+# Or delete it first, then symlink
+$ rm /etc/localtime
+$ ln -sv /usr/share/zoneinfo/<b>zone</b>/<b>zubsone</b> /etc/localtime
 </pre>
 
 If needed, look through `/usr/share/zoneinfo` first for `zone` and `subzone` options.
@@ -591,11 +595,15 @@ $ nvim /boot/loader/arch.conf
 <pre>
 title Arch Linux
 linux /vmlinuz-linux
+initrd /intel-ucode.img
 initrd /initramfs-linux.img
 options cryptdevice=UUID=<b>XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</b>:volume root=/dev/mapper/volume-root quiet rw
 
 # Get the UUID from within <em>vim</em> or <em>nvim</em>.
 :read ! blkid /dev/sda2
+
+# Or like this.
+:read ! cryptsetup luksUUID /dev/sda2
 
 # <em>/dev/sda2</em> is our LUKS formatted LVM partition.
 # <em>/dev/sda1</em> is our boot partition.
