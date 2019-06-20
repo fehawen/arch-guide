@@ -7,13 +7,6 @@
 	Arch Linux on Dell XPS 13 (9343)
 	</h1>
 
-<div align="center">
-	<h4>
-		<a href="./docs/DellXPS.md">Dell XPS</a> |
-		<a href="./docs/Config.md">Config</a>
-	</h4>
-</div>
-
 ## About
 
 Installation guide for Arch Linux on a Dell XPS 13 (9343) using:
@@ -25,27 +18,26 @@ Installation guide for Arch Linux on a Dell XPS 13 (9343) using:
 
 ## Table of Contents
 
-[Issues](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#issues)
-[Bootup](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#bootup)
-	* [UEFI](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#uefi)
-	* [Keymap](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#keymap)
-	* [Font](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#font)
+1. [Issues](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#1-issues)
+2. [Bootup](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#2-bootup)
+	* 2.1. [UEFI](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#21-uefi)
+	* 2.2. [Keymap](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#22-keymap)
+	* 2.3. [Font](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#23-font)
+	* 2.4. [Internet](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#24-internet)
+		* 2.4.1. [Ethernet](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#241-ethernet)
+		* 2.4.2. [Wifi](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#242-wifi)
+			* 2.4.2.1. [wpa_supplicant](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#2421-wpa_supplicant)
+			* 2.4.2.2. [wifi-menu](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#2422-wifi-menu)
 
-## Known issues
+## 1. Issues
 
 The Dell DW1560 802.11ac adapter (based on the Broadcom BCM4352 chip) requires `broadcom-wl` or `broadcom-wl-dkms`, and also `linux-headers` (even though it's listed as an optional dependency).
 
 See [Arch Wiki - Dell XPS 13 (9343)](https://wiki.archlinux.org/index.php/Dell_XPS_13_(9343)) and [Arch Wiki - Broadcom wireless](https://wiki.archlinux.org/index.php/Broadcom_wireless) for more information.
 
-## Note on writing to file
+## 2. Bootup
 
-When writing to file with `>`, the file's existing content is deleted and replaced with the command's output.
-
-When writing to file with `>>`, the file's existing content is left untouched, and the command's output is appended to the end of the file.
-
-## Bootup
-
-### UEFI
+### 2.1. UEFI
 
 To make sure, check that the system uses `UEFI`, which it should.
 
@@ -57,7 +49,7 @@ $ ls /sys/firmware/efi/efivars
 $ efivar -l
 </pre>
 
-### Keymap
+### 2.2. Keymap
 
 Make typing commands a bit easier by setting a temporary keymap (Swedish layout for example) for the current session.
 
@@ -73,7 +65,7 @@ For other options, list available keymaps in `/usr/share/kbd/keymaps/`.
 $ ls /usr/share/kbd/keymaps/
 </pre>
 
-### Font
+### 2.3. Font
 
 The QHD or UHD screen on the Dell XPS might make the font look incredibly small, which we can fix temporarily during the installation.
 
@@ -88,7 +80,7 @@ Or list avaiable fonts for options.
 $ fc-list
 </pre>
 
-### Internet Connection
+### 2.4. Internet
 
 Depending on the situation, hardware, prerequisites and preference, set up a connection using either `ethernet` or `wi-fi`.
 
@@ -96,7 +88,7 @@ If you for some reason – adaptor issues, lack of ports, forgot to pay the inte
 
 Thethering should work fine, at least if it's an **Android** phone (or so I've heard). If it's an **iPhone** you're currently sporting however, then perhaps you ought to read [this](https://wiki.archlinux.org/index.php/IPhone_tethering).
 
-#### Ethernet
+#### 2.4.1. Ethernet
 
 Detect your network interface, called something like `enp0s25` or whatever.
 
@@ -122,9 +114,9 @@ $ ping 5 8.8.8.8
 $ ping -c 5 8.8.8.8
 </pre>
 
-#### Wi-Fi
+#### 2.4.2. Wifi
 
-##### wpa_supplicant
+##### 2.4.2.1. wpa_supplicant
 
 Check the wireless card status.
 
@@ -200,7 +192,7 @@ Use `-r` flag to release private IP address, when/if needed.
 $ dhclient <b>interface</b> -r
 </pre>
 
-##### wifi-menu
+##### 2.4.2.2. wifi-menu
 
 Connecting to a wireless network with `wifi-menu` is self-explanatory.
 
