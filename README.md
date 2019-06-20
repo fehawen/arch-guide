@@ -21,7 +21,7 @@
 <br>
 
 <p align="center">
-Yes, yes, I know. RTFM and all that...
+	<b>Yes, yes, I know. RTFM and all that...</b>
 </p>
 
 Some people might frown upon the fact that I've put together my own little cheathseet here for the world to see, instead of reading the [Bible](https://wiki.archlinux.org) from cover to cover as I probably should.
