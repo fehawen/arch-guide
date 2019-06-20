@@ -1,10 +1,9 @@
 <h1 align="center">
-	<a href="https://github.com/fehawen/arch-guide">
-		<img alt="arch rice" src="https://user-images.githubusercontent.com/36552788/59663744-f6f3fc00-91af-11e9-9386-bd18df3ae57a.png" width="400">
+	<a href="https://github.com/fehawen/arch-rice">
+		<img alt="arch rice" src="https://user-images.githubusercontent.com/36552788/51067962-869ce980-1617-11e9-892b-53df540776b5.png" width="350">
 	</a>
-	<br>
-	<br>
-	Installation guide / config notes
+	<br>Arch Linux
+	<br>Installation / Cheatsheet
 </h1>
 
 <div align="center">
