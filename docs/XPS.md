@@ -24,15 +24,7 @@ Installation guide for Arch Linux on a Dell XPS 13 (9343) using:
 * `UEFI` firmware interface
 * `systemd-boot` bootloader
 * `GPT` partitioning table
-* `LUKS` encrypted `LVM` partition for `/root` and `/home`
-
-Yes, yes, I know. RTFM and all that...
-
-Some people might frown upon the fact that I've put together my own little installation guide/note cheathseet here for the world to see (OMG! Open Source!?), instead of reading the [Bible](https://wiki.archlinux.org) from cover to cover as if installing an OS is the only thing ever worth spending time on.
-
-But, I can't be arsed to memorize all the darn commands and steps and options and keep-in-minds and whatnots, and I don't fancy having a gazillion browser tabs open whenever I need to reinstall it, so I'll do what's forbidden and put together my own little step-by-step here.
-
-Don't be haters, alligators. And the [Bible](https://wiki.archlinux.org) is amazeballs, don't get me worng.
+* `LUKS` encrypted `LVM` partition for `/root`, `/home` and `swap`
 
 ## Table of Contents
 
@@ -122,7 +114,7 @@ You can also press **Option** (i.e. the **alt** key) to enter the boot menu, fro
 
 ### 2.2. Others
 
-On other systems/machines, changing the boot order or boot device is done in the BIOS settings menu, which can be accessed by spamming something like `F2` or `F6` on startup.
+On other systems, changing the boot order or boot device is done in the BIOS settings menu, which can be accessed by spamming something like `F2` or `F6` on startup.
 
 You can also spam something like `F10`, which'll give you a menu form which you'll have to navigate to the BIOS settings/setup menu.
 
@@ -130,9 +122,9 @@ Exactly which key brings up said menus on startup varies, so a quick search on y
 
 ## UEFI
 
-Check that our system uses `UEFI`, which it should.
+To make sure, check that the system uses `UEFI`, which it should.
 
-If the command returns a list of files, we're good to go.
+If the command returns a list of files, all is well.
 
 <pre>
 $ ls /sys/firmware/efi/efivars
@@ -142,7 +134,7 @@ $ efivar -l
 
 ## Keymap
 
-Make typing commands a bit easier by setting a temporary keymap (Swedish layout in my case) for the current session.
+Make typing commands a bit easier by setting a temporary keymap (Swedish layout for example) for the current session.
 
 Permanent keymap will be set later on.
 
@@ -382,7 +374,7 @@ Create logical volume for *swap*.
 $ lvcreate -L12G volume -n swap
 </pre>
 
-Create logical volume for *root*.
+Create logical volume for `root`.
 
 <pre>
 # 30 GB root volume in the 'volume' group, named 'root', which results in 'dev/mapper/volume-root'
@@ -518,7 +510,7 @@ Here, you'll most likely only need `UTF-8`, unless for some reason you also requ
 # en_US.UTF-8 UTF-8
 # en_US ISO-8859-1
 ...
-# Uncomment preferred choice, e.g. Swedish for me
+# Uncomment preferred choice, e.g. Swedish for example
 sv_SE.UTF-8 UTF-8
 # sv_SE ISO-8859-1
 </pre>
@@ -545,7 +537,7 @@ Set permanent keymap for keyboard layout (we did this before, but temporarily), 
 $ nvim /etc/vconsole.conf
 </pre>
 
-Edit the necessary line with your preferred layout (again, Swedish for me).
+Edit the necessary line with your preferred layout (again, Swedish for example).
 
 <pre>
 $ KEYMAP=sv-latin1
