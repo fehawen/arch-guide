@@ -555,7 +555,7 @@ Set host name.
 $ echo <b>host_name</b> > /etc/hostname
 </pre>
 
-Create a user account.
+Create a non-root user.
 
 <pre>
 $ useradd -m -g users -G wheel -s /bin/bash <b>username</b> && passwd <b>password</b>
