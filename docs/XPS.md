@@ -76,14 +76,18 @@ $ ls /usr/share/kbd/keymaps/
 
 ### 2.3. Font
 
-The QHD or UHD screen on the Dell XPS might make the font look incredibly small, which we can fix temporarily during the installation.
+The screen resolution on the Dell XPS might make the font look incredibly small, which we can fix temporarily during the installation.
 
 <pre>
-# setfont fontname fontsize x lineheight
-$ setfont sun12x24
+# It's ugly, bit the best we can do on this screen, for now
+$ setfont sun12X22
 </pre>
 
-Or list avaiable fonts for options.
+Or list available fonts for options.
+
+<pre>
+$ ls /usr/share/kbd/consolefonts
+</pre>
 
 <pre>
 $ fc-list
@@ -105,7 +109,7 @@ Detect your network interface, called something like `enp0s25` or whatever.
 $ ip link
 </pre>
 
-Connect the interface to ze internetz using `dhcpcd`.
+If needed, connect the interface to ze internetz using `dhcpcd`. Ping first to check.
 
 <pre>
 $ dhcpcd <interface>
@@ -273,7 +277,7 @@ Encrypt Linux `LVM` partition with `LUKS`.
 $ cryptsetup luksFormat /dev/sda2
 </pre>
 
-Open encrypted partition to enable installation.
+Open encrypted partition to enable installation, naming it **lvm** as example here and for the remaining steps.
 
 <pre>
 $ cryptsetup open --type luks /dev/sda2 <b>lvm</b>
@@ -282,7 +286,7 @@ $ cryptsetup open --type luks /dev/sda2 <b>lvm</b>
 Check that it exists.
 
 <pre>
-$ ls /dev/mapper/lvm # should return: /dev/mapper/lvm
+$ ls /dev/mapper/lvm
 </pre>
 
 Create physical volume on top of `/dev/mapper/lvm`.
@@ -291,10 +295,10 @@ Create physical volume on top of `/dev/mapper/lvm`.
 $ pvcreate /dev/mapper/lvm
 </pre>
 
-Create volume group.
+Create volume group, naming it **volume** as example here and for the remaining steps.
 
 <pre>
-$ vgcreate volume /dev/mapper/lvm # Replace 'volume' with preferred name
+$ vgcreate <b>volume</b> /dev/mapper/lvm
 </pre>
 
 Create logical volume for `swap`.
@@ -379,10 +383,10 @@ $ swapon /dev/mapper/volume-swap
 
 ## 8. Base
 
-Install the base system, including `base` and `base-devel`, along with `nvim` for convenience.
+Install the base system, including `base` and `base-devel`, along with `neovim` for convenience.
 
 <pre>
-$ pacstrap /mnt base base-devel nvim
+$ pacstrap /mnt base base-devel neovim
 </pre>
 
 ## 9. fstab
@@ -413,7 +417,7 @@ Install additional packages, noting that `broadcom-wl`and `linux-headers` are re
 $ pacman -S networkmanager broadcom-wl linux-headers sudo
 </pre>
 
-Tell `systemd``to automatically start `networkmanager` on startup.
+Tell `systemd` to automatically start `networkmanager` on startup.
 
 <pre>
 $ systemctl enable NetworkManager
@@ -424,6 +428,10 @@ Set timezone by symlinking the desired `zone` with `subzone` to `/etc/localtime`
 <pre>
 # The -v flag is just for verbose output
 $ ln -sv /usr/share/zoneinfo/<b>zone</b>/<b>zubsone</b> /etc/localtime
+
+# You may get an error that the file already exists,
+# in which case you can use the <b>-f</b> flag for force
+$ ln -sfv /usr/share/zoneinfo/<b>zone</b>/<b>zubsone</b> /etc/localtime
 </pre>
 
 If needed, look through `/usr/share/zoneinfo` first for `zone` and `subzone` options.
@@ -471,6 +479,8 @@ $ locale > /etc/locale.conf
 
 # Or like this
 $ echo LANG=sv_SE.UTF-8 > /etc/locale.conf
+
+# Or edit /etc/locale.conf manually in e.g. nvim
 </pre>
 
 Set permanent keymap for keyboard layout (we did this before, but temporarily), by editing `/etc/vconsole.conf`.
@@ -500,13 +510,20 @@ $ echo <b>host_name</b> > /etc/hostname
 Create a non-root user.
 
 <pre>
-$ useradd -m -g users -G wheel -s /bin/bash <b>username</b> && passwd <b>password</b>
+$ useradd -m -g users -G wheel -s /bin/bash <b>username</b>
 </pre>
 
-Edit `/etc/sudoers` to allow `sudo` commands without being asked for password all the time. And yes, this may or may not be good idea.
+Create password for new user.
 
 <pre>
-$ nvim /etc/sudoers
+$ passwd <b>username</b>
+</pre>
+
+Edit `/etc/sudoers` to allow `sudo` commands without being asked for password all the time. And yes, this may or may not be a good idea.
+
+<pre>
+# The file is readonly, hence the following command
+$ sudo EDITOR=nvim visudo
 
 # Uncomment this line, somewhere at the end of that file
 %wheel ALL=(ALL) NOPASSWD: ALL
@@ -530,7 +547,7 @@ Since we're using LUKS disk encryption and LVM, we need to change the `initramfs
 $ nvim /etc/mkinitcpio.conf
 </pre>
 
-Search for the variable `HOOKS` inside `/etc/mkinitcpio.conf` and rearrange the order so that `keyboard` is listead before `filesystems`, and adding `encrypt` and `lvm2` (also before `filtesystems`)
+Search for the variable `HOOKS` inside `/etc/mkinitcpio.conf` and rearrange the order so that `keyboard` is listead before `filesystems`, and adding `encrypt` and `lvm2` (also before `filesystems`)
 
 <pre>
 ...
