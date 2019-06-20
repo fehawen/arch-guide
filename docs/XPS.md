@@ -1,11 +1,11 @@
 <h1 align="center">
-	<a href="https://github.com/fehawen/arch-guide">
-		<img alt="arch rice" src="https://user-images.githubusercontent.com/36552788/59663744-f6f3fc00-91af-11e9-9386-bd18df3ae57a.png" width="400">
+	<a href="https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md">
+		<img alt="xps installation" src="https://user-images.githubusercontent.com/36552788/59856089-7df2d100-9376-11e9-906a-cc3f8a6d6001.png" width="250">
 	</a>
 	<br>
 	<br>
-	Installation guide / config notes
-</h1>
+	Arch Linux on Dell XPS 13 (9343)
+	</h1>
 
 <div align="center">
 	<h4>
@@ -13,9 +13,6 @@
 		<a href="./docs/Config.md">Config</a>
 	</h4>
 </div>
-
-
-# Arch Linux on Dell XPS 13 (9343)
 
 ## About
 
@@ -28,37 +25,11 @@ Installation guide for Arch Linux on a Dell XPS 13 (9343) using:
 
 ## Table of Contents
 
-[**Preparation**](https://github.com/fehawen/arch-guide#preparation)
-
-1. [Creating a Live USB](https://github.com/fehawen/arch-guide#1-creating-a-live-usb)
-	* 1.1. [Terminal](https://github.com/fehawen/arch-guide#11-terminal)
-		* 1.1.1. [macOS](https://github.com/fehawen/arch-guide#111-macos)
-		* 1.1.2. [Linux](https://github.com/fehawen/arch-guide#112-linux)
-		* 1.1.3. [Windows](https://github.com/fehawen/arch-guide#113-windows)
-	* 1.2. [GUI](https://github.com/fehawen/arch-guide#12-GUI)
-2. [Booting into Arch](https://github.com/fehawen/arch-guide#2-booting-into-arch)
-	* 2.1. [Apple](https://github.com/fehawen/arch-guide#21-apple)
-	* 2.2. [Others](https://github.com/fehawen/arch-guide#22-others)
-3. [UEFI or BIOS](https://github.com/fehawen/arch-guide#3-uefi-or-bios)
-
-[**Installation**](https://github.com/fehawen/arch-guide#installation)
-
-4. [Keymap](https://github.com/fehawen/arch-guide#4-keymap)
-5. [Font Size](https://github.com/fehawen/arch-guide#5-font-size)
-6. [Internet Connection](https://github.com/fehawen/arch-guide#6-internet-connection)
-	* 6.1. [Ethernet](https://github.com/fehawen/arch-guide#61-ethernet)
-	* 6.2. [Wi-Fi](https://github.com/fehawen/arch-guide#62-wi-fi)
-		* 6.2.1 [wpa_supplicant](https://github.com/fehawen/arch-guide#621-wpa_supplicant)
-		* 6.2.2 [wifi-menu](https://github.com/fehawen/arch-guide#622-wifimenu)
-7. [Partitioning](https://github.com/fehawen/arch-guide#7-partitioning)
-	* 7.1. [Notes](https://github.com/fehawen/arch-guide#71-notes)
-	* 7.2. [Partitioning for GRUB](https://github.com/fehawen/arch-guide#72-partitioning-for-grub)
-	* 7.3. [Partitioning for systemd](https://github.com/fehawen/arch-guide#73-partitioning-for-systemd)
-8. [Install Base system](https://github.com/fehawen/arch-guide#8-install-base-system)
-9. [Configure Installation](https://github.com/fehawen/arch-guide#9-configure-installation)
-10. [Install Bootloader](https://github.com/fehawen/arch-guide#10-install-bootloader)
-	* 10.1. [GRUB](https://github.com/fehawen/arch-guide#101-grub)
-	* 10.2. [systemd](https://github.com/fehawen/arch-guide#102-systemd-boot)
+[Issues](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#issues)
+[Bootup](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#bootup)
+	* [UEFI](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#uefi)
+	* [Keymap](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#keymap)
+	* [Font](https://github.com/fehawen/arch-guide/blob/master/docs/XPS.md#font)
 
 ## Known issues
 
@@ -72,55 +43,9 @@ When writing to file with `>`, the file's existing content is deleted and replac
 
 When writing to file with `>>`, the file's existing content is left untouched, and the command's output is appended to the end of the file.
 
-# Preparation
+## Bootup
 
-## 1. Creating a Live USB
-
-Grab a USB stick, download the [Arch ISO](https://www.archlinux.org/download/), and get crackin'.
-
-### 1.1 Terminal
-
-#### 1.1.1. macOS
-
-Give your terminal the following to chew on, keeping in mind to replace **X** with the number that points to the disk that is your USB stick. And wahtever you do, don't get that number wrong, or you'll wipe out whichever disk you accidentally entered. Don't sweat it.
-
-<pre>
-$ diskutil list
-$ diskutil unmountDisk /dev/disk<b>X</b>
-$ sudo dd if=path/to/arch.iso of=/dev/rdisk"X" bs=1m
-</pre>
-
-#### 1.1.2. Linux
-
-If you're on a Linux system, there are a number of options such as `unetbootin` and `ddrescue`, to name a few.
-
-Have a look [here](https://wiki.archlinux.org/index.php/USB_flash_installation_media#In_GNU/Linux) for more information.
-
-#### 1.1.3. Windows
-
-If you're on Windows, have a look [here](https://wiki.archlinux.org/index.php/USB_flash_installation_media#In_Windows) for more information.
-
-### 1.2. GUI
-
-For a GUI way of doing it, regardless of whether you're on macOS, Linux or Windows, you can use something like [Etcher](https://wiki.archlinux.org/index.php/USB_flash_installation_media#Using_etcher), which does it all for you in a self-explanatory manner.
-
-## 2. Booting into Arch
-
-### 2.1. Apple
-
-Reboot your computer and press **C** to boot directly from a second boot device – in this case your Live USB.
-
-You can also press **Option** (i.e. the **alt** key) to enter the boot menu, from where you acan choose your installation media – again, your Live USB in this case.
-
-### 2.2. Others
-
-On other systems, changing the boot order or boot device is done in the BIOS settings menu, which can be accessed by spamming something like `F2` or `F6` on startup.
-
-You can also spam something like `F10`, which'll give you a menu form which you'll have to navigate to the BIOS settings/setup menu.
-
-Exactly which key brings up said menus on startup varies, so a quick search on your specific machine might be necessary.
-
-## UEFI
+### UEFI
 
 To make sure, check that the system uses `UEFI`, which it should.
 
@@ -132,7 +57,7 @@ $ ls /sys/firmware/efi/efivars
 $ efivar -l
 </pre>
 
-## Keymap
+### Keymap
 
 Make typing commands a bit easier by setting a temporary keymap (Swedish layout for example) for the current session.
 
@@ -148,9 +73,9 @@ For other options, list available keymaps in `/usr/share/kbd/keymaps/`.
 $ ls /usr/share/kbd/keymaps/
 </pre>
 
-## 5. Font Size
+### Font
 
-The QHD or UHD screen resolution might make the font look incredibly small, which we can fix temporarily during the installation.
+The QHD or UHD screen on the Dell XPS might make the font look incredibly small, which we can fix temporarily during the installation.
 
 <pre>
 # setfont fontname fontsize x lineheight
@@ -163,7 +88,7 @@ Or list avaiable fonts for options.
 $ fc-list
 </pre>
 
-## 6. Internet Connection
+### Internet Connection
 
 Depending on the situation, hardware, prerequisites and preference, set up a connection using either `ethernet` or `wi-fi`.
 
@@ -171,7 +96,7 @@ If you for some reason – adaptor issues, lack of ports, forgot to pay the inte
 
 Thethering should work fine, at least if it's an **Android** phone (or so I've heard). If it's an **iPhone** you're currently sporting however, then perhaps you ought to read [this](https://wiki.archlinux.org/index.php/IPhone_tethering).
 
-### 6.1. Ethernet
+#### Ethernet
 
 Detect your network interface, called something like `enp0s25` or whatever.
 
@@ -185,7 +110,7 @@ Connect the interface to ze internetz using `dhcpcd`.
 $ dhcpcd <interface>
 </pre>
 
-Ping something (hey, it rhymes!) to verify your connection, like ping G****e 5 times.
+Ping something to verify your connection, like ping Google 5 times.
 
 <pre>
 $ ping 5 8.8.8.8
@@ -197,9 +122,9 @@ $ ping 5 8.8.8.8
 $ ping -c 5 8.8.8.8
 </pre>
 
-### 6.2. Wi-Fi
+#### Wi-Fi
 
-#### 6.2.1 wpa_supplicant
+##### wpa_supplicant
 
 Check the wireless card status.
 
@@ -275,9 +200,13 @@ Use `-r` flag to release private IP address, when/if needed.
 $ dhclient <b>interface</b> -r
 </pre>
 
-#### 6.2.2. wifi-menu
+##### wifi-menu
 
-*To be written.*
+Connecting to a wireless network with `wifi-menu` is self-explanatory.
+
+<pre>
+$ wifi-menu
+</pre>
 
 ## Partitioning
 
@@ -471,10 +400,16 @@ $ genfstab -U /mnt >> /mnt/etc/fstab
 
 ## Configure installation
 
-Get *root* access to the system itself.
+Get `root` access to the system itself.
 
 <pre>
 $ arch-chroot /mnt
+</pre>
+
+Install additional packages.
+
+<pre>
+$ pacman -S networkmanager sudo
 </pre>
 
 Set timezone by symlinking the desired `zone` with `subzone` to `/etc/localtime`.
