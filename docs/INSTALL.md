@@ -39,7 +39,7 @@ Create an empty GPT partition table.
 $ o
 </pre>
 
-Create a new EFI boot partition (512 MB).
+Create a new EFI boot partition.
 
 <pre>
 $ n
@@ -50,7 +50,7 @@ Last sector (...): +512MiB
 Hex code or GUID (...): ef00
 </pre>
 
-Create a new Linux Filesystem partition for the remaining space.
+Create a new Linux Filesystem partition.
 
 <pre>
 $ n
