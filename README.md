@@ -3,7 +3,7 @@
 		<img alt="arch rice" src="https://user-images.githubusercontent.com/36552788/51067962-869ce980-1617-11e9-892b-53df540776b5.png" width="350">
 	</a>
 	<br>Arch Linux
-	<br>Installation / Cheatsheet
+	<br>Installation / Configuration
 </h1>
 
 <div align="center">
