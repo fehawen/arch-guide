@@ -103,6 +103,12 @@ Install base system.
 $ pacstrap /mnt base base-devel neovim
 </pre>
 
+Generate an fstab.
+
+<pre>
+$ genfstab -U /mnt > /mnt/etc/fstab
+</pre>
+
 Get root access to the system itself.
 
 <pre>
