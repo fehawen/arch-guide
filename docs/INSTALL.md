@@ -93,7 +93,7 @@ $ mkswap /dev/sda2
 Create EXT4 file system for main partition.
 
 <pre>
-$ mkfs.ext4 /dev/sda2
+$ mkfs.ext4 /dev/sda3
 </pre>
 
 Mount main partition.
