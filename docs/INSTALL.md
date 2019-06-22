@@ -283,8 +283,8 @@ initrd /intel-ucode.img
 initrd /initramfs-linux.img
 options root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 
-# Read in /dev/sda2 PARTUUID
-:read ! blkid -s PARTUUID -o value /dev/sda2
+# Read in /dev/sda3 PARTUUID
+:read ! blkid -s PARTUUID -o value /dev/sda3
 </pre>
 
 Exit the chroot session.
