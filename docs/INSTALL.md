@@ -57,8 +57,8 @@ $ n
 
 Partition number (...):
 First sector (...):
-Last sector (...): +12288MiB
-Hex code or GUID (...): ?
+Last sector (...): +12GiB
+Hex code or GUID (...): 8200
 </pre>
 
 Create a new Linux Filesystem partition.
