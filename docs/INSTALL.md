@@ -18,13 +18,13 @@ $ loadkeys sv-latin1
 Install font and editor for use during installation.
 
 <pre>
-$ pacman -S neovim terminus-font
+$ pacman -Sy neovim terminus-font
 </pre>
 
 Set font for easier read.
 
 <pre>
-$ setfont ter-v22n
+$ setfont ter-v28n
 </pre>
 
 Partition with gdisk.
@@ -50,6 +50,17 @@ Last sector (...): +512MiB
 Hex code or GUID (...): ef00
 </pre>
 
+Create SWAP partition.
+
+<pre>
+$ n
+
+Partition number (...):
+First sector (...):
+Last sector (...): +12288MiB
+Hex code or GUID (...): ?
+</pre>
+
 Create a new Linux Filesystem partition.
 
 <pre>
@@ -67,13 +78,19 @@ Write changes to execute partitioning.
 $ w
 </pre>
 
-Make vfat file system for boot partition.
+Create FAT32 file system for boot partition.
 
 <pre>
-$ mkfs.vfat /dev/sda1
+$ mkfs.fat -F32 /dev/sda1
 </pre>
 
-Make ext4 file system for main partition.
+Create SWAP for swap partition.
+
+<pre>
+$ mkswap /dev/sda2
+</pre>
+
+Create EXT4 file system for main partition.
 
 <pre>
 $ mkfs.ext4 /dev/sda2
@@ -82,7 +99,13 @@ $ mkfs.ext4 /dev/sda2
 Mount main partition.
 
 <pre>
-$ mount /dev/sda2 /mnt
+$ mount /dev/sda3 /mnt
+</pre>
+
+Initialize swap.
+
+<pre>
+$ swapon /dev/sda2
 </pre>
 
 Create boot directory.
@@ -227,7 +250,7 @@ bootctl install
 Check that everything looks alright.
 
 <pre>
-$ cd /boot
+$ ls /boot
 </pre>
 
 Setup loader configuration.
@@ -258,8 +281,26 @@ title Arch Linux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+options root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 
 # Read in /dev/sda2 PARTUUID
-:read ! blkid /dev/sda2
+:read ! blkid -s PARTUUID -o value /dev/sda2
+</pre>
+
+Exit the chroot session.
+
+<pre>
+$ exit
+</pre>
+
+Unmount the file system.
+
+<pre>
+$ umount -R /mnt
+</pre>
+
+Reboot, remove the Live USB while, enjoy.
+
+<pre>
+$ reboot
 </pre>
