@@ -172,7 +172,7 @@ $ nvim /etc/locale.gen
 Uncomment preferred option.
 
 <pre>
-sv_SE.UTF-8 UTF-8
+en_US.UTF-8 UTF-8
 </pre>
 
 Generate locale file.
@@ -184,7 +184,7 @@ $ locale-gen
 Load selected locale on startup.
 
 <pre>
-$ echo LANG=sv_SE.UTF-8 > /etc/locale.conf
+$ echo LANG=en_US.UTF-8 > /etc/locale.conf
 </pre>
 
 Set permanent keymap for keyboard layout.
