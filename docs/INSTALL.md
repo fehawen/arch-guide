@@ -141,13 +141,7 @@ $ arch-chroot /mnt
 Install additional packages.
 
 <pre>
-$ pacman -S networkmanager broadcom-wl linux-headers intel-ucode sudo
-</pre>
-
-Automatically start networkmanager on startup.
-
-<pre>
-$ systemctl enable NetworkManager
+$ pacman -S wireless_tools broadcom-wl linux-headers intel-ucode sudo
 </pre>
 
 Set timezone.
