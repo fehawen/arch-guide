@@ -21,10 +21,16 @@ Install window manager, terminal, etc.
 $ pacman -S i3-gaps i3status rxvt-unicode dmenu
 </pre>
 
+Install additional packages.
+
+<pre>
+$ pacman -S git
+</pre>
+
 Clone dotfiles.
 
 <pre>
-$ git clone https://github.com/fehawen/dotfiles ~/Dotfiles
+$ git clone https://github.com/fehawen/dotfiles.git ~/Dotfiles
 </pre>
 
 Run the setup.
