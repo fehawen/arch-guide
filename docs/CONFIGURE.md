@@ -9,16 +9,28 @@
 
 ## Configuration
 
-Check if the wireless interface was created.
+Install X.
 
 <pre>
-$ ip link
+$ pacman -S xorg-server xorg-xinit
 </pre>
 
-Bring wireless interface up.
+Install window manager, terminal, etc.
 
 <pre>
-$ ip link set <b>wlp2s0</b> up
+$ pacman -S i3-gaps i3status rxvt-unicode dmenu
 </pre>
 
+Clone dotfiles.
 
+<pre>
+$ git clone https://github.com/fehawen/dotfiles ~/Dotfiles
+</pre>
+
+Run the setup.
+
+<pre>
+$ cd ~/Dotfiles && make
+</pre>
+
+Done.
