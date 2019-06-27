@@ -12,13 +12,13 @@
 Install X.
 
 <pre>
-$ pacman -S xorg-server xorg-xinit
+$ pacman -S xorg-server xorg-xinit xorg-xrandr
 </pre>
 
 Install window manager, terminal, etc.
 
 <pre>
-$ pacman -S i3-gaps i3status kitty dmenu firefox
+$ pacman -S i3-gaps i3status kitty dmenu firefox xf86-input-libinput
 </pre>
 
 Install additional packages.
