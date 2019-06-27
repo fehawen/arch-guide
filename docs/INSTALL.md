@@ -151,6 +151,12 @@ $ rm /etc/localtime
 $ ln -sv /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 </pre>
 
+Sync hardware clock.
+
+<pre>
+$ timedatectl set-ntp true
+</pre>
+
 Set hardware clock.
 
 <pre>
