@@ -27,6 +27,25 @@ Install additional packages.
 $ pacman -S git
 </pre>
 
+Fix scaling for screen, additionally to X config.
+
+<pre>
+$ sudo touch /etc/profile.d/hidpi.sh
+<pre>
+
+<pre>
+$ sudo nvim /etc/profile.d/hidpi.sh
+<pre>
+
+<pre>
+	export GDK_SCALE=2
+	export GDK_DPI_SCALE=0.5
+	export QT_AUTO_SCREEN_SCALE_FACTOR=0
+	export QT_SCREEN_SCALE_FACTORS=2
+	export QT_QPA_PLATFORMTHEME=qt5ct
+</pre>
+
+
 Clone dotfiles.
 
 <pre>
