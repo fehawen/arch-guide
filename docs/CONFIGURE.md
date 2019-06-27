@@ -18,7 +18,7 @@ $ pacman -S xorg-server xorg-xinit
 Install window manager, terminal, etc.
 
 <pre>
-$ pacman -S i3-gaps i3status rxvt-unicode dmenu
+$ pacman -S i3-gaps i3status kitty dmenu firefox
 </pre>
 
 Install additional packages.
