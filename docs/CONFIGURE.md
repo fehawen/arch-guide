@@ -18,13 +18,7 @@ $ pacman -S xorg-server xorg-xinit xorg-xrandr
 Install window manager, terminal, etc.
 
 <pre>
-$ pacman -S i3-gaps i3status kitty dmenu firefox xf86-input-libinput
-</pre>
-
-Install additional packages.
-
-<pre>
-$ pacman -S git
+$ pacman -S i3-gaps i3status kitty dmenu firefox git fira-code xf86-input-libinput
 </pre>
 
 Fix scaling for screen, additionally to X config.
