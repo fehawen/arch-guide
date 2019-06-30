@@ -27,24 +27,26 @@ Install additional packages.
 $ pacman -S git
 </pre>
 
-Fix scaling for screen, additionally to X config.
+Edit touchpad configuration.
 
 <pre>
-$ sudo touch /etc/profile.d/hidpi.sh
-<pre>
-
-<pre>
-$ sudo nvim /etc/profile.d/hidpi.sh
-<pre>
-
-<pre>
-	export GDK_SCALE=2
-	export GDK_DPI_SCALE=0.5
-	export QT_AUTO_SCREEN_SCALE_FACTOR=0
-	export QT_SCREEN_SCALE_FACTORS=2
-	export QT_QPA_PLATFORMTHEME=qt5ct
+$ sudo nvim /usr/share/X11/xorg.conf.d/40-libinput.conf
 </pre>
 
+<pre>
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Option "Tapping" "true"
+        Option "TappingDrag" "true"
+        Option "NaturalScrolling" "true"
+        Option "AccelProfile" "linear"
+        Option "AccelSpeed" "0.25"
+        Option "DisableWhileTyping" "false"
+        Driver "libinput"
+EndSection
+</pre>
 
 Clone dotfiles.
 
