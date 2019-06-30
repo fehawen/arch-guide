@@ -193,10 +193,11 @@ Set permanent keymap for keyboard layout.
 $ nvim /etc/vconsole.conf
 </pre>
 
-Insert preferred keymap.
+Insert preferred keymap and console font.
 
 <pre>
-$ KEYMAP=sv-latin1
+KEYMAP=sv-latin1
+FONT=ter-v28n
 </pre>
 
 Create root password.
