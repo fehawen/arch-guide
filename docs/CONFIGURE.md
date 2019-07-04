@@ -15,10 +15,10 @@ Install X.
 $ pacman -S xorg-server xorg-xinit xorg-xrandr
 </pre>
 
-Install window manager, terminal, etc.
+Install window manager, terminal, web and file browser, etc.
 
 <pre>
-$ pacman -S i3-gaps i3status kitty dmenu firefox git otf-fira-code xf86-input-libinput
+$ pacman -S i3-gaps i3status kitty dmenu firefox ranger git xf86-input-libinput
 </pre>
 
 Edit touchpad configuration.
@@ -40,6 +40,12 @@ Section "InputClass"
         Option "DisableWhileTyping" "false"
         Driver "libinput"
 EndSection
+</pre>
+
+Install drivers for Intel graphics.
+
+<pre>
+$ sudo pacman -S xf86-video-intel mesa
 </pre>
 
 Clone dotfiles.
