@@ -12,7 +12,7 @@
 Install X.
 
 <pre>
-$ pacman -S xorg-server xorg-xinit xorg-xrandr
+$ pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
 </pre>
 
 Install window manager, terminal, web and file browser, etc.
