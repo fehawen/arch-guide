@@ -48,6 +48,12 @@ Install drivers for Intel graphics.
 $ sudo pacman -S xf86-video-intel mesa
 </pre>
 
+Install python pillow library to enable image preview with Ranger in Kitty terminal.
+
+<pre>
+$ sudo pacman -S python-pillow
+</pre>
+
 Clone dotfiles.
 
 <pre>
