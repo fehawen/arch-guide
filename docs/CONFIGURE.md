@@ -18,7 +18,7 @@ $ pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
 Install window manager, terminal, web and file browser, etc.
 
 <pre>
-$ pacman -S i3-gaps i3status kitty dmenu firefox ranger git xf86-input-libinput
+$ pacman -S i3-gaps i3blocks kitty dmenu firefox ranger git xf86-input-libinput
 </pre>
 
 Edit touchpad configuration.
