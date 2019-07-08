@@ -54,6 +54,12 @@ Install python pillow library to enable image preview with Ranger in Kitty termi
 $ sudo pacman -S python-pillow
 </pre>
 
+Install audio packages.
+
+<pre>
+$ sudo pacman -S alsa-utils alsa-lib pulseaudio pamixer
+</pre>
+
 Clone dotfiles.
 
 <pre>
