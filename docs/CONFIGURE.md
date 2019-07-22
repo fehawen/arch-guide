@@ -15,10 +15,20 @@ Install X.
 $ pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
 </pre>
 
-Install window manager, terminal, web and file browser, etc.
+Install additional packages.
 
 <pre>
-$ pacman -S i3-gaps i3blocks kitty dmenu firefox ranger git xf86-input-libinput
+$ pacman -S i3-gaps conky kitty dmenu firefox ranger git xf86-input-libinput
+</pre>
+
+Change MAKEFLAGS to use all threads in for faster builds, e.g. AUR packages
+
+<pre>
+$ sudo nvim /etc/makepkg.conf
+</pre>
+
+<pre>
+$ MAKEFLAGS="-j${nproc}"
 </pre>
 
 Edit touchpad configuration.
