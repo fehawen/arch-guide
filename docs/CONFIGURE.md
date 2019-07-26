@@ -12,13 +12,13 @@
 Install X.
 
 <pre>
-$ pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
+$ sudo pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
 </pre>
 
 Install additional packages.
 
 <pre>
-$ pacman -S i3-gaps conky kitty dmenu firefox ranger git xf86-input-libinput
+$ sudo pacman -S i3-gaps conky kitty dmenu firefox ranger git xf86-input-libinput otf-font-awesome
 </pre>
 
 Change MAKEFLAGS to use all threads in for faster builds, e.g. AUR packages
