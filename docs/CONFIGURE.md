@@ -70,10 +70,10 @@ Install audio packages.
 $ sudo pacman -S alsa-utils alsa-lib pulseaudio pamixer
 </pre>
 
-Install developers tools.
+Install developers tools and other useful packages.
 
 <pre>
-$ sudo pacman -S npm python-pip
+$ sudo pacman -S npm zathura poppler zathura-pdf-poppler
 </pre>
 
 Clone dotfiles.
