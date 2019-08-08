@@ -70,6 +70,12 @@ Install audio packages.
 $ sudo pacman -S alsa-utils alsa-lib pulseaudio pamixer
 </pre>
 
+Install developers tools.
+
+<pre>
+$ sudo pacman -S npm python-pip
+</pre>
+
 Clone dotfiles.
 
 <pre>
