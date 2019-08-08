@@ -73,8 +73,18 @@ $ sudo pacman -S alsa-utils alsa-lib pulseaudio pamixer
 Install developers tools and other useful packages.
 
 <pre>
-$ sudo pacman -S npm zathura poppler zathura-pdf-poppler
+$ sudo pacman -S npm docker zathura poppler zathura-pdf-poppler
 </pre>
+
+Start and enable Docker.
+
+<pre
+$ systemctl start docker
+<pre>
+
+<pre
+$ systemctl enable docker
+<pre>
 
 Clone dotfiles.
 
