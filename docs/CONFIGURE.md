@@ -80,11 +80,11 @@ Start and enable Docker.
 
 <pre
 $ systemctl start docker
-<pre>
+</pre>
 
 <pre
 $ systemctl enable docker
-<pre>
+</pre>
 
 Clone dotfiles.
 
