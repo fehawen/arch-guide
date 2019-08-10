@@ -24,7 +24,7 @@ $ sudo pacman -S i3-gaps i3lock conky kitty dmenu firefox surf gtop ranger git x
 Change MAKEFLAGS to use all threads in for faster builds, e.g. AUR packages
 
 <pre>
-$ sudo nvim /etc/makepkg.conf
+$ sudoedit /etc/makepkg.conf
 </pre>
 
 <pre>
@@ -34,7 +34,7 @@ $ MAKEFLAGS="-j${nproc}"
 Edit touchpad configuration.
 
 <pre>
-$ sudo nvim /usr/share/X11/xorg.conf.d/40-libinput.conf
+$ sudoedit /usr/share/X11/xorg.conf.d/40-libinput.conf
 </pre>
 
 <pre>
