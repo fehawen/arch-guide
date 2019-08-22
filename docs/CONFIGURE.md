@@ -18,7 +18,7 @@ $ sudo pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
 Install additional packages.
 
 <pre>
-$ sudo pacman -S i3-gaps i3lock conky kitty dmenu firefox surf gtop ranger git xf86-input-libinput otf-font-awesome pacman-contrib scrot newsboat zathura zathura-pdf-poppler zip unzip
+$ sudo pacman -S i3-gaps i3lock conky kitty dmenu firefox surf gtop ranger git xf86-input-libinput pacman-contrib scrot newsboat zathura zathura-pdf-poppler zip unzip
 </pre>
 
 Change MAKEFLAGS to use all threads in for faster builds, e.g. AUR packages
