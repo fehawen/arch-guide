@@ -123,7 +123,7 @@ $ mount /dev/sda1 /mnt/boot
 Install base system.
 
 <pre>
-$ pacstrap /mnt base base-devel neovim
+$ pacstrap /mnt base base-devel
 </pre>
 
 Generate an fstab.
@@ -141,7 +141,7 @@ $ arch-chroot /mnt
 Install additional packages.
 
 <pre>
-$ pacman -S wireless_tools broadcom-wl linux-headers intel-ucode sudo
+$ pacman -S wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog neovim
 </pre>
 
 Set timezone.
