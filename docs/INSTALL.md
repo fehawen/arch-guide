@@ -141,7 +141,7 @@ $ arch-chroot /mnt
 Install additional packages.
 
 <pre>
-$ pacman -S wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog neovim
+$ pacman -S wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim
 </pre>
 
 Set timezone.
