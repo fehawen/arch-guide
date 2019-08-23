@@ -21,6 +21,12 @@ Install font and editor for use during installation.
 $ pacman -Sy neovim terminus-font
 </pre>
 
+Change mirrors if needed.
+
+<pre>
+$ nvim /etc/pacman.d/mirrorlist
+</pre>
+
 Set font for easier read.
 
 <pre>
