@@ -206,6 +206,15 @@ KEYMAP=sv-latin1
 FONT=ter-v28n
 </pre>
 
+UPDATE:
+Set lang and keymaps using `localectl` instead.
+
+<pre>
+localectl set-locale LANG="en_US.UTF-8"
+localectl set-keymap se
+localectl set-x11-keymap se
+</pre>
+
 Create root password.
 
 <pre>
@@ -233,6 +242,7 @@ $ passwd <b>username</b>
 Enable sudo commands without password.
 
 <pre>
+
 $ sudo EDITOR=nvim visudo
 </pre>
 

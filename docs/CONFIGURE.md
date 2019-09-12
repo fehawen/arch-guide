@@ -35,6 +35,29 @@ Edit touchpad configuration.
 
 <pre>
 $ sudoedit /usr/share/X11/xorg.conf.d/40-libinput.conf
+# Note: this should really be: 30-touchpad.conf
+# Make sure to update this...
+
+# Also add keyboard configuration: 00-keyboard.conf
+# Also seen: 20-keyboard-layout.conf
+# It will look something like this:
+
+# Section "InputClass"
+#         Identifier "system-keyboard"
+#         MatchIsKeyboard "on"
+#         Option "XkbLayout" "se"
+#         Option "XkbModel" "pc104"
+# EndSection
+
+# Or:
+
+# Section "InputDevice"
+#    Identifier  "Keyboard0"
+#    Driver      "kbd"
+#    Option      "XkbModel"  "pc105"
+#    Option      "XkbRules"  "xorg"
+#    Option      "XkbLayout" "se"
+# EndSection
 </pre>
 
 <pre>
