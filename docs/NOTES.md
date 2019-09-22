@@ -9,6 +9,34 @@
 
 ## Notes
 
+### WiFi Management
+
+Use `wifi-menu` only to create profile, thereafter use `netctl` to enable auto-connects.
+
+Enable auto-roaming mode.
+
+<pre>
+$ sudo systemctl enable netctl-auto@wlp2s0.service
+</pre>
+
+Enable a profile for automatic selection.
+
+<pre>
+$ netctl-auto enable wlp2s0-NameOfProfile
+</pre>
+
+Connecting to profile manually.
+
+<pre>
+$ sudo netctl-auto switch-to wlp2s0-NameOfProfile
+</pre>
+
+List profiles.
+
+<pre>
+$ netctl-auto list
+</pre>
+
 ### Issues
 
 External keyboard with same physical layout does not adhere to applied keymap/layout.
@@ -16,7 +44,6 @@ External keyboard with same physical layout does not adhere to applied keymap/la
 This might help, but unverified.
 
 <pre>
-localectl set-locale LANG="sv_SE.UTF-8"
 localectl set-keymap se
 localectl set-x11-keymap se
 </pre>
