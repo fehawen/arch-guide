@@ -14,9 +14,7 @@
 </div>
 
 <div align="center">
-	<sub>Writen with 🖤 by
-	<a href="https://github.com/fehawen">fehawen</a>
-	</sub>
+	<sub>Written with 🖤 by <a href="https://github.com/fehawen">fehawen</a></sub>
 </div>
 <br>
 
