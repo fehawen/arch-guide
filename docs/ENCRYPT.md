@@ -186,6 +186,12 @@ Get root access to the system itself.
 $ arch-chroot /mnt
 </pre>
 
+Update keyring (might be necessary).
+
+<pre>
+$ pacman -S archlinux-keyring
+</pre>
+
 Install additional packages.
 
 <pre>
