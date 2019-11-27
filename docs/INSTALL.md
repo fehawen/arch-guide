@@ -142,7 +142,7 @@ Generate an fstab.
 $ genfstab -U /mnt >> /mnt/etc/fstab
 </pre>
 
-If necessary, edit fstab file, changing relatime on all non-boot partitions to noatime (reduces wear if using an SSD).
+If necessary, edit fstab file, changing relatime on all relevant non-boot partitions to noatime (reduces wear if using an SSD).
 
 <pre>
 $ nvim /mnt/etc/fstab
