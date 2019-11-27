@@ -161,7 +161,6 @@ Mount the boot partition.
 $ mount /dev/sda1 /mnt/boot
 </pre>
 
-
 Install base system.
 
 <pre>
@@ -172,12 +171,6 @@ Generate an fstab.
 
 <pre>
 $ genfstab -U -p /mnt >> /mnt/etc/fstab
-</pre>
-
-If necessary, edit fstab file, changing relatime on all non-boot partitions to noatime (reduces wear if using an SSD).
-
-<pre>
-$ nvim /mnt/etc/fstab
 </pre>
 
 Get root access to the system itself.
