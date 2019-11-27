@@ -8,8 +8,8 @@
 
 <div align="center">
 	<h4>
-		<a href="./docs/INSTALL.md">Install (non-encrypted)</a> |
 		<a href="./docs/ENCRYPT.md">Install (encrypted)</a> |
+		<a href="./docs/INSTALL.md">Install (non-encrypted)</a> |
 		<a href="./docs/CONFIGURE.md">Configure</a>
 	</h4>
 </div>

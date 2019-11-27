@@ -3,9 +3,8 @@
 		<img alt="xps installation" src="https://user-images.githubusercontent.com/36552788/59856089-7df2d100-9376-11e9-906a-cc3f8a6d6001.png" width="250">
 	</a>
 	<br>
-	<br>
 	Arch Linux on Dell XPS 13 (9343)
-	</h1>
+</h1>
 
 ## Configuration
 

@@ -5,9 +5,11 @@
 	<br>
 	<br>
 	Arch Linux on Dell XPS 13 (9343)
-	<br>
+</h1>
+
+<h2 align="center">
 	Encrypted installation with LVM on LUKS
-	</h1>
+</h2>
 
 ## Installation
 
