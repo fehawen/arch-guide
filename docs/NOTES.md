@@ -9,6 +9,64 @@
 
 ## Notes
 
+### Arch Linux `base` package changes
+
+<pre>
+--- old-base.txt	2019-10-06 20:46:27.801837395 +0800
++++ new-base.txt	2019-10-06 20:48:52.316676476 +0800
+@@ -1,11 +1,6 @@
+ bash
+ bzip2
+ coreutils
+-cryptsetup
+-device-mapper
+-dhcpcd
+-diffutils
+-e2fsprogs
+ file
+ filesystem
+ findutils
+@@ -15,36 +10,17 @@
+ glibc
+ grep
+ gzip
+-inetutils
+ iproute2
+ iputils
+-jfsutils
+-less
+ licenses
+ linux
+-linux-firmware
+-logrotate
+-lvm2
+-man-db
+-man-pages
+-mdadm
+-nano
+-netctl
+ pacman
+ pciutils
+-perl
+ procps-ng
+ psmisc
+-reiserfsprogs
+-s-nail
+ sed
+ shadow
+-sysfsutils
+-systemd-sysvcompat
++systemd
+ tar
+-texinfo
+-usbutils
+ util-linux
+-vi
+-which
+-xfsprogs
++xz
+</pre>
+
 ### WiFi Management
 
 Use `wifi-menu` only to create profile, thereafter use `netctl` to enable auto-connects.

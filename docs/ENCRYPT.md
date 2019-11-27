@@ -164,7 +164,7 @@ $ mount /dev/sda1 /mnt/boot
 Install base system.
 
 <pre>
-$ pacstrap /mnt base base-devel
+$ pacstrap /mnt base linux linux-firmware base-devel
 </pre>
 
 Generate an fstab.
@@ -195,7 +195,7 @@ $ pacman -Syu archlinux-keyring
 Install additional packages.
 
 <pre>
-$ pacman -S linux mkinitcpio wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
+$ pacman -Syu lvm2 cryptsetup netctl less mkinitcpio wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
 </pre>
 
 Set timezone.

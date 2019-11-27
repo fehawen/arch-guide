@@ -133,7 +133,7 @@ $ mount /dev/sda1 /mnt/boot
 Install base system.
 
 <pre>
-$ pacstrap /mnt base base-devel
+$ pacstrap /mnt base linux linux-firmware base-devel
 </pre>
 
 Generate an fstab.
@@ -154,16 +154,10 @@ Get root access to the system itself.
 $ arch-chroot /mnt
 </pre>
 
-Update keyring (might be necessary).
-
-<pre>
-$ pacman -Syu archlinux-keyring
-</pre>
-
 Install additional packages.
 
 <pre>
-$ pacman -S wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
+$ pacman -Syu netctl less wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
 </pre>
 
 Set timezone.
