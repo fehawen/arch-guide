@@ -174,6 +174,7 @@ $ genfstab -U -p /mnt >> /mnt/etc/fstab
 </pre>
 
 If necessary, edit fstab file, changing relatime on all relevant non-boot partitions to noatime (reduces wear if using an SSD).
+Note however that enabling trim may/will cause leaks of the free/used space of a drive. However, this might be an acceptable tradeoff.
 
 <pre>
 $ nvim /mnt/etc/fstab
