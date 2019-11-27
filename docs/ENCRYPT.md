@@ -195,7 +195,7 @@ $ pacman -Syu archlinux-keyring
 Install additional packages.
 
 <pre>
-$ pacman -Syu lvm2 cryptsetup netctl less mkinitcpio wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
+$ pacman -Syu lvm2 cryptsetup dhcpcd netctl less mkinitcpio wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
 </pre>
 
 Set timezone.

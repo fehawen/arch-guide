@@ -157,7 +157,7 @@ $ arch-chroot /mnt
 Install additional packages.
 
 <pre>
-$ pacman -Syu netctl less wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
+$ pacman -Syu dhcpcd netctl less wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
 </pre>
 
 Set timezone.
