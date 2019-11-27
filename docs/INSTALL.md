@@ -5,6 +5,8 @@
 	<br>
 	<br>
 	Arch Linux on Dell XPS 13 (9343)
+	<br>
+	Regular installation (non-encrypted)
 	</h1>
 
 ## Installation
@@ -135,7 +137,13 @@ $ pacstrap /mnt base base-devel
 Generate an fstab.
 
 <pre>
-$ genfstab -U /mnt > /mnt/etc/fstab
+$ genfstab -U /mnt >> /mnt/etc/fstab
+</pre>
+
+If necessary, edit fstab file, changing relatime on all non-boot partitions to noatime (reduces wear if using an SSD).
+
+<pre>
+$ nvim /mnt/etc/fstab
 </pre>
 
 Get root access to the system itself.
@@ -316,7 +324,7 @@ Unmount the file system.
 $ umount -R /mnt
 </pre>
 
-Reboot, remove the Live USB while, enjoy.
+Reboot, remove the Live USB, enjoy.
 
 <pre>
 $ reboot
