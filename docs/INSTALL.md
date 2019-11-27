@@ -157,7 +157,7 @@ $ arch-chroot /mnt
 Update keyring (might be necessary).
 
 <pre>
-$ pacman -S archlinux-keyring
+$ pacman -Syu archlinux-keyring
 </pre>
 
 Install additional packages.

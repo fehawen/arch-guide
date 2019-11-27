@@ -189,13 +189,13 @@ $ arch-chroot /mnt
 Update keyring (might be necessary).
 
 <pre>
-$ pacman -S archlinux-keyring
+$ pacman -Syu archlinux-keyring
 </pre>
 
 Install additional packages.
 
 <pre>
-$ pacman -S wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
+$ pacman -S linux mkinitcpio wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
 </pre>
 
 Set timezone.
