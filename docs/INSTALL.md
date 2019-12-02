@@ -133,7 +133,7 @@ $ mount /dev/sda1 /mnt/boot
 Install base system.
 
 <pre>
-$ pacstrap /mnt base linux linux-firmware base-devel
+$ pacstrap /mnt base base-devel linux linux-firmware
 </pre>
 
 Generate an fstab.
