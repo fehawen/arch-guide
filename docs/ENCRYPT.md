@@ -173,13 +173,6 @@ Generate an fstab.
 $ genfstab -U -p /mnt >> /mnt/etc/fstab
 </pre>
 
-If necessary, edit fstab file, changing relatime on all relevant non-boot partitions to noatime (reduces wear if using an SSD).
-Note however that enabling trim may/will cause leaks of the free/used space of a drive. However, this might be an acceptable tradeoff.
-
-<pre>
-$ nvim /mnt/etc/fstab
-</pre>
-
 Get root access to the system itself.
 
 <pre>
@@ -195,7 +188,7 @@ $ pacman -Syu archlinux-keyring
 Install additional packages.
 
 <pre>
-$ pacman -Syu base lvm2 cryptsetup dhcpcd netctl less mkinitcpio wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
+$ pacman -Syu lvm2 cryptsetup dhcpcd netctl less mkinitcpio wireless_tools broadcom-wl linux-headers intel-ucode sudo dialog wpa_supplicant neovim git
 </pre>
 
 Set timezone.
