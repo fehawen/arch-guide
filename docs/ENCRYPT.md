@@ -268,6 +268,13 @@ Set host name.
 $ echo <b>hostname</b> > /etc/hostname
 </pre>
 
+Add mathcing entries to `/etc/hosts`
+
+<pre>
+127.0.0.1      localhost
+::1            localhost
+127.0.1.1      <b>hostname</b>.localdomain <b>hostname</b>
+
 Create a non-root user.
 
 <pre>
