@@ -137,3 +137,23 @@ Section "OutputClass"
         Option  "AccelMethod" "none"
 EndSection
 </pre>
+
+Reboot.
+
+After that, run:
+
+<pre>
+$ xrandr --listproviders
+
+# Providers: number : 2
+# Provider 0: id: 0x49 cap: 0xb, Source Output, Sink Output, Sink Offload crtcs: 2 outputs: 8 associated providers: 0 name:Intel
+# Provider 1: id: 0x13c cap: 0x2, Sink Output crtcs: 1 outputs: 1 associated providers: 0 name:modesetting
+</pre>
+
+In the above output, we can see that provider 0 is the system's regular graphics provider (Intel), and provider 1 (modesetting) is the DisplayLink provider. To use the DisplayLink device, connect provider 1 to provider 0:
+
+<pre>
+$ xrandr --setprovideroutputsource 1 0
+</pre>
+
+For more details, read <a href="https://wiki.archlinux.org/index.php/DisplayLink">this</a>
