@@ -120,7 +120,4 @@ Run the setup.
 $ cd ~/Dotfiles && make
 </pre>
 
-# Add notes on VirtualBox...
-# https://linuxhint.com/install-virtualbox-arch-linux/
-
 Done.

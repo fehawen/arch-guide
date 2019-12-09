@@ -106,23 +106,34 @@ localectl set-keymap se
 localectl set-x11-keymap se
 </pre>
 
-Or this, also unverified.
-
-<pre>
-# /etc/X11/xorg.conf.d/00-keyboard.conf
-
-Section "InputClass"
-        Identifier "system-keyboard"
-        MatchIsKeyboard "on"
-        Option "XkbLayout" "cz,us"
-        Option "XkbModel" "pc104"
-        Option "XkbVariant" ",dvorak"
-        Option "XkbOptions" "grp:alt_shift_toggle"
-EndSection
-</pre>
-
 Might be helpful to see what the logs say.
 
 <pre>
 $ cat ~/.local/share/xorg/Xorg.0.log
+</pre>
+
+Connection to Docking station with DisplayLink for multiple screens etc.
+
+Install AUR packages.
+
+<pre>
+https://aur.archlinux.org/evdi-git.git
+https://aur.archlinux.org/displaylink.git
+</pre>
+
+Enable `displaylink.service`
+
+<pre>
+systemctl enable displaylink.service
+</pre>
+
+Configure `/usr/share/X11/xorg.conf.d/20-evdidevice.conf`
+
+<pre>
+Section "OutputClass"
+        Identifier "DisplayLink"
+        MatchDriver "evdi"
+        Driver "modesetting"
+        Option  "AccelMethod" "none"
+EndSection
 </pre>
