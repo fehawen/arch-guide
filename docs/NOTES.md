@@ -157,3 +157,5 @@ $ xrandr --setprovideroutputsource 1 0
 </pre>
 
 For more details, read <a href="https://wiki.archlinux.org/index.php/DisplayLink">this</a>
+
+And laos read <a href="https://savoisn.github.io/post/displaylink_on_arch/">this</a>
