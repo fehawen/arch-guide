@@ -34,32 +34,10 @@ Edit touchpad configuration.
 
 <pre>
 $ sudoedit /usr/share/X11/xorg.conf.d/40-libinput.conf
-# Note: this should really be: 30-touchpad.conf
-# Make sure to update this...
 
-# Also add keyboard configuration: 00-keyboard.conf
-# Also seen: 20-keyboard-layout.conf
-# It will look something like this:
+# Note: this should really be 30-touchpad.conf
+#       but who can be sure...
 
-# Section "InputClass"
-#         Identifier "system-keyboard"
-#         MatchIsKeyboard "on"
-#         Option "XkbLayout" "se"
-#         Option "XkbModel" "pc104"
-# EndSection
-
-# Or:
-
-# Section "InputDevice"
-#    Identifier  "Keyboard0"
-#    Driver      "kbd"
-#    Option      "XkbModel"  "pc105"
-#    Option      "XkbRules"  "xorg"
-#    Option      "XkbLayout" "se"
-# EndSection
-</pre>
-
-<pre>
 Section "InputClass"
         Identifier "libinput touchpad catchall"
         MatchIsTouchpad "on"
@@ -71,6 +49,36 @@ Section "InputClass"
         Option "AccelSpeed" "0.25"
         Option "DisableWhileTyping" "false"
         Driver "libinput"
+EndSection
+</pre>
+
+Edit external keyboard configuration.
+
+Check for clues with `setxkbmap -print -verbose 10`.
+
+<pre>
+$ sudoedit /usr/share/X11/xorg.conf.d/00-keyboard.conf
+
+# Note:  I've also seen 20-keyboard-layout.conf
+#        but again, who can be sure...
+
+# It will look something like this:
+
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "se"
+        Option "XkbModel" "pc104"
+EndSection
+
+# Or probably more something like this:
+
+Section "InputDevice"
+   Identifier  "Keyboard0"
+   Driver      "kbd"
+   Option      "XkbModel"  "pc105"
+   Option      "XkbRules"  "xorg"
+   Option      "XkbLayout" "se"
 EndSection
 </pre>
 
