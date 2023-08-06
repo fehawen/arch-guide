@@ -214,7 +214,7 @@ Set lang and keymaps using `localectl` instead.
 
 <pre>
 localectl set-locale LANG="en_US.UTF-8"
-localectl set-keymap se
+localectl set-keymap sv-latin1
 localectl set-x11-keymap se
 </pre>
 
